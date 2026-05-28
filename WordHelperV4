@@ -1322,7 +1322,7 @@ end
 -- ──────────────────────────────────────────────
 local UIS = game:GetService("UserInputService")
 
-local PW, PH = 300, 500
+local PW, PH = 240, 380
 local TH = 52  -- title bar height
 
 -- Derived layout constants
