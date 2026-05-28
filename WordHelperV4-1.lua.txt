@@ -1,0 +1,1656 @@
+-- ==============================================
+-- Roblox "Connect the World" Word Helper V3.1
+-- Compact mobile UI · Vast vocabulary · A vs B
+-- ==============================================
+
+local Players      = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer  = Players.LocalPlayer
+
+-- ──────────────────────────────────────────────
+-- PALETTE
+-- ──────────────────────────────────────────────
+local CLR = {
+    bg         = Color3.fromRGB(10,  12,  20),
+    panel      = Color3.fromRGB(18,  20,  32),
+    card       = Color3.fromRGB(26,  28,  44),
+    cardHover  = Color3.fromRGB(36,  38,  58),
+    accent     = Color3.fromRGB(80, 200, 140),
+    accentDark = Color3.fromRGB(40, 110,  75),
+    rival      = Color3.fromRGB(240, 100,  80),
+    rivalDark  = Color3.fromRGB(140,  50,  35),
+    titleText  = Color3.fromRGB(200, 255, 220),
+    bodyText   = Color3.fromRGB(190, 195, 215),
+    mutedText  = Color3.fromRGB(100, 105, 130),
+    white      = Color3.fromRGB(255, 255, 255),
+    badgeGreen = Color3.fromRGB(50,  180, 100),
+    badgeRed   = Color3.fromRGB(200,  70,  60),
+    border     = Color3.fromRGB(45,  50,  75),
+}
+
+-- ──────────────────────────────────────────────
+-- VOCABULARY  (150–250 words every letter)
+-- ──────────────────────────────────────────────
+local DB = {
+  A={
+    "aalborg","aardvark","aback","abacus","abaft","abalone","abandon","abandoned",
+    "abase","abash","abate","abaya","abbey","abbot","abbreviate","abduct",
+    "abeam","aberdeen","aberrant","abhor","abide","abidjan","abilene","ability",
+    "abiotic","abird","abject","abkhazia","ablaze","abode","abolish","abort",
+    "about","above","abrasion","abrasive","abrupt","absence","absent","absinthe",
+    "absolute","absolutezero","absorb","absorption","absurd","abuja","abundant","abuse",
+    "abuzz","abyss","abyssal","acacia","acai","acanthus","accelerate","acceleration",
+    "accent","accept","access","accessibility","accesspoint","acclaim","accordion","account",
+    "accountant","accra","accretion","accrue","accurate","aceh","acetylene","ache",
+    "ached","achieve","achievement","acid","acidrain","acing","acknowledge","acme",
+    "aconite","acorn","acousticguitar","acquire","acquired","acrid","acrobat","across",
+    "acted","actinium","action","activate","active","activetransport","activity","actor",
+    "actuary","actuator","acumen","acute","adage","adamant","adapt","adaptation",
+    "adaptive","add","added","adder","addisababa","address","adelaide","adept",
+    "adequate","adhere","adhesion","adjoin","adjourn","adjust","admin","administrator",
+    "admirable","admire","admit","adobe","adobo","adopt","adore","adorn",
+    "adroit","adult","advance","advanced","advantage","advent","adverse","adzuki",
+    "aegis","aeration","aerial","aerie","aerobic","aerobics","aerospace","afar",
+    "affable","affect","affiliate","affirm","afflict","affluent","affogato","afghanistan",
+    "afoot","afraid","after","afternoon","agadir","again","agapanthus","agar",
+    "agate","agave","age","aged","agedashi","agenda","agent","aggregate",
+    "aggregator","aghast","agile","agility","aging","agitate","agitated","agitation",
+    "aglow","agnolotti","agony","agra","agree","agreeable","agricultural","agrodolce",
+    "agronomist","agronomy","ahead","ahmedabad","aid","aide","ailment","aim",
+    "aimed","aioli","airbrush","aircompressor","airhose","airjack","airmass","airplane",
+    "airpressure","airpump","airquality","airrifle","airsports","airspray","airy","ajax",
+    "akin","alabaster","alacrity","alarm","alarmclock","alarmed","albania","albatross",
+    "albedo","album","albuquerque","alchemy","alder","aleppo","alert","alexandria",
+    "algae","algebra","algeria","algiers","algorithm","alias","alicante","alien",
+    "alienate","align","aligner","alike","alive","alizarin","alkali","alkaline",
+    "all","allay","allele","allenkey","allergen","allergy","alley","alligator",
+    "allium","allocate","allot","allow","alloy","allure","alluvial","almaty",
+    "almeria","almond","aloe","aloft","alone","along","aloof","aloud",
+    "alpaca","alpen","alphadecay","alphaskiing","alpine","alsace","altai","altar",
+    "alter","altercation","alternatingcurrent","alternative","altimeter","altitude","alto","altruism",
+    "altruistic","aluminium","aluminum","always","amaranth","amaranthpink","amarillo","amaryllis",
+    "amass","amaze","amazed","amazing","ambassador","amber","ambient","ambiguous",
+    "ambitious","amble","ambulance","ambush","amend","amenity","amethyst","amiable",
+    "amicable","aminoacid","amiss","amman","ammetor","among","ampere","amphitheater",
+    "ample","amplifier","amplify","amplitude","amsterdam","amuse","amused","anaerobic",
+    "analog","analogy","analyst","analytics","analyze","anatomy","ancestry","anchor",
+    "anchorage","anchorbolt","anchovy","ancient","andalusia","andaman","andorra","andouille",
+    "android","andromeda","anecdote","anesthesiologist","anew","angel","angelhair","angelica",
+    "angers","angle","anglegrinder","angleplate","angler","angola","angry","angst",
+    "angular","animate","animation","animator","anime","anion","anise","ankara",
+    "ankle","anklet","annals","annatto","annex","anniversary","annotate","announce",
+    "annoy","annual","annually","anode","anon","anorak","another","answer",
+    "antalya","antares","antelope","antenna","anthem","anthropologist","anthurium","anti",
+    "antibody","anticyclone","antigen","antigua","antilles","antimatter","antimony","antique",
+    "antler","antwerp","anvil","anxious","any","aorta","apart","apathetic",
+    "apatite","ape","aperitif","aphelion","api","aplomb","app","appall",
+    "appalled","appease","appetize","apple","applesauce","applet","appletree","apply",
+    "appointment","appraiser","appreciate","approach","apricot","april","apron","apt",
+    "aptly","aqua","aquamarine","aquatics","arabland","aragon","arancini","arbor",
+    "arborist","arborpress","arborvitae","arc","archaeologist","archery","archipelago","architect",
+    "archland","archway","arcwelder","ardabil","ardent","ardor","area","arena",
+    "arenafootball","arezzo","argentina","argon","argue","aria","arid","aridzone",
+    "arise","arkhangelsk","arm","armadillo","armature","armband","armchair","armenia",
+    "armor","armored","armpit","aroused","arpeggiated","arpeggio","arrange","array",
+    "arrival","arrogant","arrowhead","arsenic","arson","artesianwell","artfully","arthritis",
+    "artichoke","artichokegre","articulate","artisan","artist","artistic","artsakh","arty",
+    "aruba","arugula","ascend","ascertain","ascot","ash","ashamed","ashen",
+    "asheville","ashfall","ashgabat","ashkelon","ashtray","ashtree","asiago","aside",
+    "asked","askew","asmara","asparagus","aspect","aspen","aspic","assay",
+    "assemble","assembler","assembly","assertion","assess","assessor","asset","assist",
+    "associate","assume","astana","aster","asteroid","asteroidbelt","asthma","astilbe",
+    "astir","astonished","astound","astrakhan","astronaut","astronomer","astrophysics","asturias",
+    "astute","asuncion","asynchronous","asyut","athens","athlete","athletics","athleticshorts",
+    "atlanta","atlas","atmosphere","atmospheric","atmosphericpressure","atoll","atom","atomicmass",
+    "atomicnumber","atomicradius","atomictangerine","atone","atop","attempt","attention","attentive",
+    "attic","attorney","attract","atv","auburn","auckland","auctioneer","audacious",
+    "audit","auditor","aught","augmentedreality","augsburg","august","aunt","aureolin",
+    "aurora","austere","australia","austria","authentic","authentication","author","authoritative",
+    "autism","autocross","autodrill","autoimmune","autolevel","automate","automation","autonomous",
+    "autorace","autorickshaw","autumn","avail","avalanche","avant","avantgarde","avarice",
+    "avatar","aveiro","avenge","average","avert","avgolemono","avian","avignon",
+    "avila","avocado","avoid","avow","await","awake","awe","awestruck",
+    "awful","awning","awry","axe","axis","axle","axlestand","axolotl",
+    "axon","ayah","azalea","azerbaijan","azores","azure",
+  },
+  B={
+    "babaganoush","babble","babblue","baboon","babypink","back","backend","backpacking",
+    "backsaw","backup","backyard","bacon","bacteria","bad","badge","badger",
+    "badlands","badly","badminton","baffled","bagel","baghdad","baguette","baguio",
+    "bahamas","bahrain","baked","baker","bakingdish","bakingsheet","baklava","baku",
+    "balance","balcony","baler","bali","ballad","balletflat","ballpark","ballvalve",
+    "balsam","balsamic","bamako","bamboo","banana","bananatree","bandage","bandana",
+    "bandclamp","bandsaw","bandwidth","bandy","bangkok","bangladesh","bangui","banjo",
+    "banjul","banker","banquet","banter","bao","barbados","barbecue","barberry",
+    "barcelona","bared","barefoot","barely","barge","barista","barite","baritone",
+    "barium","barkeeper","barley","barnaul","baroda","barometer","barometric","baron",
+    "baroque","barrage","barramundi","barrelwrench","barren","barricade","barrierisland","bartender",
+    "basalt","base","baseball","baseballcap","basejump","basepair","bash","bashful",
+    "basic","basil","basin","basket","basketball","basmati","basque","bass",
+    "bassclef","bassdrum","basseterre","bassline","bassoon","baste","bat","batch",
+    "bathe","bathingsuit","bathmat","bathrobe","bathtowel","bathymetric","baton","batter",
+    "battery","batterydrill","batty","bavaria","bawdy","bawl","bay","baylaurel",
+    "bayou","bayreuth","beach","beachhandball","beachsoccer","beacon","beady","beanie",
+    "bear","bearberry","beard","bearingpuller","bearings","bearnaise","beast","beat",
+    "beatbox","beautiful","beaver","bebop","bechamel","bed","bedding","bedraggled",
+    "bedrock","bedsheet","beech","beef","beet","befuddled","began","begin",
+    "begonia","behold","beige","beigewhite","beignet","beijing","beirut","belarus",
+    "belfast","belgium","belgrade","believe","belize","belligerent","belmopan","belong",
+    "belt","beltsander","bench","benchgrinder","benchmark","benchvise","bend","beneath",
+    "beneficial","benefit","benevolent","bengal","bengaluru","benin","beret","bergamot",
+    "bergen","berlin","berry","berth","beryllium","beseech","bestow","betony",
+    "bewail","bewildered","bewitch","bezel","bhutan","biannual","biased","biathlon",
+    "bicycle","biddy","big","bigdata","bigdipper","biking","bikini","bilbao",
+    "billiards","billion","billow","binary","binarystar","binbag","binge","binocular",
+    "binomial","binturong","bioacoustics","biocapacity","biodiversity","bioengineer","bioethics","biofuel",
+    "bioinformatics","biologist","biology","biomass","biome","biometric","biometrics","bionic",
+    "biophysics","biopsy","bios","biosphere","biospherereserve","biplane","birch","birdofparadise",
+    "birmingham","birthday","birthplace","biryani","biscotti","bishkek","bismuth","bison",
+    "bisque","bissau","bitcoin","bitterlemon","bittersweet","biweekly","bizarre","black",
+    "blackbean","blackberry","blackhole","blackout","blacksmith","bladesharpener","bland","blank",
+    "blanket","blanquette","blantyre","blare","blasphemy","blast","blastandcabinet","blastgate",
+    "blastnozzle","blaze","blazer","blazing","blazingstar","bleak","bleedingheart","blemish",
+    "blend","blender","bless","blight","blimp","blink","bliss","blissful",
+    "blitz","blizzard","blizzardblue","bloat","block","blockage","blockchain","blood",
+    "bloodorange","bloom","blossom","blouse","blowing","blowlamp","blown","blue",
+    "bluebell","blueberry","bluebonnet","bluegrass","blues","bluetooth","blueviolet","bluff",
+    "blunder","blunt","blurt","blush","blushy","blustery","bmx","boar",
+    "board","boast","boat","bobsled","bochum","body","bodybuilding","bodysuit",
+    "bodysurfing","bog","boggle","boggy","bogland","bogota","bogus","boilingpoint",
+    "boisterous","bold","bolero","boleroj","bolivia","bologna","bolster","bolt",
+    "boltcutter","boltextractor","bombardment","bond","bone","boney","bonfire","bongo",
+    "bonsai","bonus","booby","book","boot","booze","borage","bordeaux",
+    "borderline","borealforest","bored","boringtool","borneo","boron","borrow","borscht",
+    "bossanova","botanist","botany","botch","both","botswana","bottle","bougainvillea",
+    "bouillon","bouldering","boullion","bountiful","bounty","bowerbird","bowl","bowling",
+    "bowsaw","bowtie","box","boxcar","boxcutter","boxerbriefs","boxing","boxwood",
+    "boysenberry","bra","bracken","bradnailer","braid","brain","braised","brake",
+    "brakebleeder","brakelathe","brakeshoe","branch","brand","brandish","brant","branzino",
+    "brash","brasilia","brass","brasspunch","bratislava","brave","brawl","brawny",
+    "braze","brazen","brazier","brazil","bread","breadbin","breadfruit","breadknife",
+    "break","breakbeat","breakthrough","breathe","breech","breed","breeze","brescia",
+    "brest","brickhammer","bricklayer","brickset","bridge","bridgetown","brie","briefs",
+    "bright","brighton","brightred","brilliant","brine","brinepump","brisbane","brisk",
+    "brisket","bristle","bristol","brittany","brittle","brittlestar","broachtool","broad",
+    "broadband","broaden","broccoli","broccolini","brogues","broil","broker","bromine",
+    "bronze","bronzechisel","brood","brook","broom","broomhandle","broth","brow",
+    "brown","brownbear","brownie","brownsville","browser","browsing","bruges","bruise",
+    "bruised","bruit","brunei","brunswick","brunt","bruschetta","brush","brushcutter",
+    "brushland","brussels","brutally","brute","bubblegum","bucharest","bucket","buckethat",
+    "bucketlid","buckle","bucks","buckwheat","budapest","budgettool","buenos","buff",
+    "buffalo","buffer","buffoon","bug","bugbane","buggy","build","builder",
+    "bujumbura","bulb","bulgaria","bulge","bulgur","bulkheadfitting","bulldozer","bulletinboard",
+    "bullfinch","bullshark","bully","bulrush","bumblebee","bumperclaamp","bumpy","bunch",
+    "bundle","bungeejumping","bunny","buoyant","burden","burdened","burdock","burger",
+    "burgundy","burkina","burly","burn","burning","burntorange","burntsienna","burntumber",
+    "burnzone","burrata","burrito","burst","burundi","bus","busdriver","bushy",
+    "bustling","butcher","butcherknife","butte","butter","butterfish","butterfly","buttermilk",
+    "butternut","butterscotch","buttondown","buttonshirt","buxom","buy","buzzard","bydgoszcz",
+    "bygone","bypass","bypath","byte","byword","byzantium",
+  },
+  C={
+    "cabal","cabbage","cabernet","cabin","cabinet","cable","cablecar","cabledetector",
+    "cablepuller","cablerack","cabletester","cabletie","cacciatore","cache","cacophony","cactus",
+    "caddisfly","caddy","cadmium","cadmiumred","cadmiumyellow","cafenoir","caftan","cagliari",
+    "caiman","cairo","cake","calabria","calamari","calamity","calcite","calcium",
+    "calculus","caldera","calendar","calendula","calf","calgary","calibrate","calibration",
+    "california","caliper","call","callalily","callback","callous","calm","calorie",
+    "cambodia","cambrian","cambridge","camclamp","camel","camellia","cameo","camera",
+    "cameroon","camper","campinas","campion","campshirt","camshafttool","canada","canaryyellow",
+    "canberra","cancun","candid","candied","candle","candor","candyapple","cannellini",
+    "cannoli","canoe","canoeing","canopener","cantabria","cantonal","canyon","cap",
+    "capable","capacitor","capacity","cape","capetown","capeverde","capo","capoeira",
+    "caprese","caprock","capsule","captivate","capture","capuchin","caputmortuum","capybara",
+    "caracas","caramel","caravan","carbideblade","carbidecutter","carbidedisc","carbidedrill","carbidefile",
+    "carbidegrinder","carbideinsert","carbidescrew","carbidetip","carbohydrate","carbon","carbonara","carbonsink",
+    "carcinogen","cardamom","cardiac","cardiff","cardigan","cardinal","care","careful",
+    "caregiver","cargo","cargopants","cargoplane","cargoship","caribbeangreen","caribou","caring",
+    "carmine","carminerose","carnage","carnation","carnelian","carnival","carpaccio","carpenter",
+    "carpet","carriageolt","carrot","carry","cartagena","cartographer","carve","carverknife",
+    "casablanca","cascade","case","cashew","cashier","casserole","cassoulet","cassowary",
+    "castanets","cat","cataclysm","catalan","catalonia","catalyst","catamaran","catania",
+    "catch","catchment","caterer","catfish","catgrass","catheter","cathode","cation",
+    "catmint","catnip","cattail","cauliflower","caulktool","cause","cautious","cave",
+    "caveat","cavern","cavesport","caviar","cayenne","cdn","ceanothus","ceaseless",
+    "cedar","cede","ceilingfan","celadon","celebes","celebration","celery","celeste",
+    "celestial","celestialbody","cell","cello","cementtruck","cenozoic","center","centerdrill",
+    "centerpunch","centipede","central","centralafricanrepublic","centripetal","century","ceo","cepheid",
+    "ceramicdisc","cerise","cerium","certain","cerulean","cesium","ceuta","ceviche",
+    "chad","chafe","chainbreaker","chaindrive","chainpuller","chainreaction","chainsaw","chair",
+    "chairleg","chairlift","chalcedony","chalk","chalkline","challenge","chambermusic","chameleon",
+    "chamomile","champagne","chance","chandigarh","changchun","change","changsha","channel",
+    "chanson","chant","chantilly","chaos","chaotic","chaparral","chaps","charcoal",
+    "charcuterie","chard","charge","charitable","charleston","charlotte","charm","chart",
+    "charterbus","chartreuse","chase","chasm","chaste","chatbot","chattanooga","chauffeur",
+    "cheap","chechnya","check","cheddar","cheek","cheer","cheerful","cheerleading",
+    "cheese","cheesecake","cheesecloth","cheesegrater","cheeseknife","cheetah","chef","chelseaboots",
+    "chelyabinsk","chemicalbond","chemicalformula","chemise","chemist","chemistry","chengdu","chennai",
+    "cherish","cherry","cherryblossom","cherryblossomcolor","cherryred","chervil","chess","chest",
+    "chestnut","chiapas","chicago","chickadee","chicken","chickpea","chicory","chief",
+    "chihuahua","child","chile","chili","chilly","chime","chimp","chimpanzee",
+    "chin","china","chinablue","chink","chinos","chip","chipmunk","chipotle",
+    "chippinghammer","chiropractor","chisel","chisinau","chittagong","chive","chives","chlorine",
+    "chlorophyll","chocolate","choice","choir","choke","chongqing","choose","chopsticks",
+    "choral","chord","choreographer","chorizo","chowder","christchurch","chromatic","chromatography",
+    "chromeyellow","chromium","chromosome","chronic","chrysanthemum","chutney","ciabatta","cicada",
+    "cilantro","cincinnati","cinematographer","cinnamon","cinnamonsatin","cinquefoil","cipher","circle",
+    "circleoffifths","circuit","circuitbreaker","circularsaw","cirque","citrine","citron","civet",
+    "civilengineer","clafoutis","claim","clairvoyant","clam","clamor","clamp","clang",
+    "claret","clarify","clarinet","clash","classical","classification","clayshooting","claysoil",
+    "clean","cleaner","clear","clearcut","clearing","cleat","cleaver","clef",
+    "cleft","clematis","clementine","clerk","cleveland","clever","cli","client",
+    "cliff","cliffdiving","cliffside","climate","climbing","clinical","clinicaltrial","cliptool",
+    "cloak","clock","clogs","clone","close","closedsystem","closetdoor","cloud",
+    "cloudberry","cloudforest","cloudformation","cloudgaming","cloudserver","cloudy","clout","clover",
+    "clovergreen","clown","clownfish","cluck","clump","clumsy","cluster","coach",
+    "coagulation","coast","coastalplain","coastline","coat","coaxialdrill","cobalt","cobaltbit",
+    "cobaltdrill","cobbler","cobot","cobra","cockroach","cocktaildress","cocktailshaker","cocoa",
+    "coconut","coconutcream","coconutmilk","cod","coda","code","codec","coefficient",
+    "coerce","coevolution","coffee","coffeecake","coffeegrinder","coffeemaker","coffeetable","cognitive",
+    "cognizant","cohesion","cohesive","coil","coilspring","coincide","colander","cold",
+    "coldchisel","coldfront","coldsnap","coleslaw","coleus","collaborate","collarbone","collect",
+    "collective","collide","collision","colloid","cologne","colombia","colombo","color",
+    "coloratura","colossal","colugo","columbine","column","columnist","coma","comb",
+    "combatsport","combination","combinationtool","combine","combustion","combwrench","come","comedian",
+    "comet","comfort","comfrey","command","commander","commit","commitment","common",
+    "communicate","comoros","compare","compassionate","compel","compete","competent","competitiveeating",
+    "compile","compiler","complete","complex","component","compose","composer","composite",
+    "composition","compost","compostbin","compote","compound","compoundmiter","compressionfitting","compressionocks",
+    "compressor","compute","computer","conakry","conceal","concede","concentrate","concepcion",
+    "concept","concerned","concert","concerto","conch","concise","concoct","concreteanchor",
+    "concretebit","concretemixer","concretenail","concussion","condensate","condensation","condensedmilk","condition",
+    "condor","conduction","conductor","conduitconnector","cone","coneflower","confer","confident",
+    "configuration","confine","confit","confitduck","conflicted","confluence","confront","confused",
+    "congenital","congo","congruent","conifer","coniferforest","conjure","connect","connected",
+    "connection","connectortool","conquer","conscious","conservation","consider","consistent","consomme",
+    "constant","constanta","constellation","consult","consultant","contactcement","contain","container",
+    "contemplate","contemplative","contend","content","context","contextual","continent","continentaldrift",
+    "continentalshelf","continue","continuousintegration","contractor","contralto","contrast","contribution","control",
+    "controlgroup","controller","conus","convection","conventional","convert","convertible","convexlens",
+    "convey","cook","cookie","cookingbrush","cool","coordinate","copenhagen","copingsaw",
+    "copper","copperhead","copse","copywriter","coral","coralbells","coralbleach","coralflower",
+    "coralreef","cordoba","corduroys","corecoping","coreddrill","coreopsis","corezone","cork",
+    "corkscrew","cormorant","corn","cornea","cornerchisel","cornflower","cornsilk","cornstarch",
+    "corny","coroner","corps","correct","corrode","corrosion","corrupt","cors",
+    "corset","corsica","cortisol","corundum","cosmic","cosmicradiation","cosmos","cost",
+    "costly","costmary","cottoncandy","cottonmouth","couch","cougar","cough","could",
+    "coulis","counsel","counselor","count","counter","countermelody","counterpoint","coupe",
+    "courageous","courier","course","court","couscous","covalentbond","cove","coventry",
+    "cover","coveralls","cowboyboots","cowboyhat","cowslip","coyote","coywolf","cpu",
+    "crab","crabcake","cracker","cracow","craft","crafty","crag","cramp",
+    "cranberry","cranberrysauce","crane","cranesbill","crash","crate","crater","craven",
+    "craving","crawl","crayfish","craze","creak","cream","creamcheese","creamer",
+    "create","creative","credential","credible","creed","creek","creep","creepingjenny",
+    "creepingphlox","cremefraiche","crepe","crescendo","crescentwrench","crest","crevasse","crevice",
+    "crewboat","crewneck","crick","cricket","crimea","crimp","crimson","crisp",
+    "crispyduck","crispyrice","critical","criticalmass","critique","croak","croatia","crockpot",
+    "crocodile","crocosmia","croissant","crone","crony","crook","croptop","croquette",
+    "cross","crosscountry","crossdrill","crossfit","crosstraining","croton","crouton","crow",
+    "crowbar","crowd","crowfootwrench","crown","crownofthorns","crucial","crude","cruel",
+    "cruiseship","crumb","crumble","crunch","crush","crust","cryogenics","crypt",
+    "cryptic","cryptocurrency","cryptography","crystal","css","cuba","cubby","cube",
+    "cuberoot","cuckoo","cucumber","cuff","cufflinks","culminate","cultivate","cumulus",
+    "cunning","cup","cupcake","curator","curb","curedsalmon","curious","curitiba",
+    "curling","currant","currawong","current","curried","curry","curryplant","curse",
+    "cursor","curtail","curtain","curve","curvy","cushion","cusp","custard",
+    "customize","customsofficer","cute","cutie","cutlassfish","cutter","cuttingboard","cuttingcompound",
+    "cuttingdisc","cyan","cybersecurity","cybertruck","cyclamen","cycle","cycling","cyclingshorts",
+    "cyclone","cylinder","cymbal","cypress","cyprus","cyst",
+  },
+  D={
+    "daddy","daejeon","daemon","daffodil","daffy","dagestan","dagger","dahlia",
+    "daikon","daily","dainty","dairy","daisy","dakar","dale","dalian",
+    "dallas","damage","damascus","dammam","dampen","damselfly","dance","dancer",
+    "dandelion","dangle","dapper","daring","dark","darkblue","darkbrown","darkcloud",
+    "darken","darkenergy","darkgreen","darkmatter","darkorange","darkpurple","darkred","darkteal",
+    "darkviolet","darling","darts","darwin","dashi","dashibroth","dashiki","data",
+    "dataanalyst","database","datacenter","datascientist","date","dated","daunt","dauntless",
+    "davao","dawdle","dawn","day","daylight","dayton","dazed","dazzle",
+    "dazzled","dazzling","deadline","deadload","deadzone","dealt","deathvalley","debacle",
+    "debrecen","debris","debugging","decade","decal","decathlon","decay","december",
+    "decent","decentralized","deception","decide","decimal","decision","decisive","deckscrew",
+    "declaration","declare","decompiler","decomposition","decorator","decoy","decrease","decree",
+    "decrescendo","decry","dedicate","dedicated","deduce","deep","deepblue","deepfried",
+    "deepgreen","deephouse","deeplearning","deepocean","deeppink","deeppurple","deepseadiving","deer",
+    "defect","defend","defiant","define","deflect","defunct","degree","dehydrated",
+    "deity","dejected","delay","delegate","delhi","deliberate","delicate","delight",
+    "delighted","deliver","delivery","deliverydriver","delphinium","delta","delude","demand",
+    "demise","demonstrate","denim","denimjacket","denmark","denominator","denounce","denpasar",
+    "dense","density","dentist","denver","depend","dependent","dependentvariable","depict",
+    "deployment","deposition","depot","deprecated","depressed","depression","depth","depthgauge",
+    "derby","derecho","derivative","derive","dermatologist","describe","desert","desertbiome",
+    "design","designate","designer","desk","desklamp","desolate","despair","desperate",
+    "detail","detailsander","detect","detective","deter","determinant","determine","determined",
+    "detroit","develop","developer","development","device","deviledegg","devious","devoid",
+    "devops","devote","devoted","devour","dew","dewpoint","dhaka","dhal",
+    "dhcp","dhole","dhoti","diagnosis","diagnostic","diagonal","diagram","dialysis",
+    "diameter","diamondback","diamondchisel","diamondcutter","diamonddrill","dianthus","dictum","didgeridoo",
+    "dieffenbachia","diegrinder","diehead","diesel","dietetic","dietitian","difference","different",
+    "differentialequation","difficult","diffraction","diffusion","digestion","digit","digital","digitalis",
+    "digitallevel","digitaltorque","digitaltwin","dignified","dilemma","diligent","dimgray","diminuendo",
+    "dimsum","dinghy","dingo","dingy","dingydungeon","diplomat","dipole","direct",
+    "directcurrent","direction","director","dirigible","dirty","disappointed","discerning","discgrinder",
+    "discharge","disciplined","disco","discord","discover","discovery","discs","discsander",
+    "discus","disgusted","dishrack","dishsoap","dismantle","dismayed","disorder","dispatcher",
+    "dispersion","displace","display","dissociation","dissonance","distance","distinct","distort",
+    "distressed","distribute","distributed","distributedledger","ditchdigger","diurnal","diverge","diverse",
+    "diversity","divertimento","divide","dividend","diving","divinity","divisor","dizzy",
+    "djembe","djibouti","dna","dns","docker","dockworker","doctor","dodge",
+    "dodgerblue","dodoma","dogma","dogwood","doha","doleful","dolly","dollypin",
+    "dolma","dolmades","dolomite","dolphin","domain","dominant","dominate","dominica",
+    "domino","donbas","done","donkey","donut","door","doorframe","doorhandle",
+    "doorknob","dormouse","dortmund","dose","double","doublecut","doubledecker","doublehelix",
+    "doublet","doubt","doubtful","dough","doughroller","doula","douse","dovegray",
+    "dovetail","dowdy","dowelbit","dowelpin","downburst","downfall","download","downpour",
+    "downslope","dowry","dozen","drab","dracaena","draft","drafter","dragonboat",
+    "dragonfly","dragster","drain","drainagebasin","drainauger","drainplug","drake","dramatic",
+    "drape","draw","drawbar","drawer","drawl","dread","dreamland","dreary",
+    "dredge","dremel","drench","dress","dressage","dressshirt","dressshoes","driedfig",
+    "driedplum","drift","driftpunch","drill","drillbit","drillchuck","drillguide","drilljig",
+    "drink","drippingpan","drive","driven","driver","drizzle","drone","droneoperator",
+    "droneracing","drool","droop","droplet","dross","drought","drove","drugs",
+    "druid","drum","drumlin","drumroller","drums","drumsander","drumwheat","drunk",
+    "dryaged","dryer","dryingrack","dryland","dryrub","drywallanchor","drywallbit","drywallcompound",
+    "drywallsaw","drywalltape","dualaction","dubai","dublin","dubstep","duchy","duck",
+    "ducky","ducttape","dugong","duisburg","dulcimer","dully","duluth","dumpling",
+    "dumpy","dunce","dundee","dune","dunebuggy","dungarees","durable","durban",
+    "durian","dushanbe","dusk","dusky","dusseldorf","dustbin","dustcloth","dustcloud",
+    "dustdevil","duststorm","dusty","dustymiller","dustyrose","dutchoven","dwarf","dwell",
+    "dwindle","dying","dynamic","dynamicequilibrium","dynamics","dysprosium",
+  },
+  E={
+    "each","eager","eagle","ear","eardrum","early","earmuffs","earn",
+    "earnest","earprotectors","earth","earthcore","earthcrust","earthflow","earthmantle","earthmound",
+    "earthmover","earthquake","earthyellow","easel","easterlily","easy","eaten","ebony",
+    "echidna","echinops","echo","eclipse","economist","ecosystem","ecru","ecstatic",
+    "ecuador","eczema","edamame","eddy","edge","edgecomputing","edged","edgeguide",
+    "edgy","edibleflower","edify","edinburgh","editor","edm","edmonton","eel",
+    "eerie","efface","effect","effective","efficient","egg","eggbeater","eggcup",
+    "eggnog","eggplant","eggseparator","eggshell","eggwhite","egypt","eigenvalue","eight",
+    "eighteen","eighth","eighty","either","eject","elaborate","eland","elastic",
+    "elated","elbow","elder","elderberry","elderflower","elect","electricblue","electricbus",
+    "electriccar","electriccharge","electricfan","electricfield","electricguitar","electrician","electriciantape","electricity",
+    "electriclime","electricpiano","electricplaner","electricplug","electricscooter","electricviolet","electrolysis","electromagnet",
+    "electromagnetic","electron","electronegativity","electronic","elegant","element","elephant","elevate",
+    "elevation","eleven","eliminate","elk","ellipse","elm","eloquence","eloquent",
+    "elude","elusive","email","embalmer","embankment","embarrassed","embedded","ember",
+    "embroil","emcee","emerald","emergentlayer","emery","emmental","emote","emotional",
+    "empathetic","emphasize","empower","empty","emu","emulsion","enable","enamel",
+    "enchant","enchilada","encourage","encroach","encryption","endanger","ended","endive",
+    "endless","endmill","endocrine","endorheic","endothermic","endow","endpoint","endpointsecurity",
+    "endurancerace","endure","enduring","energetic","energize","energized","energy","enfeeble",
+    "enforce","engage","engineer","enginehoist","englishivy","englishred","englishviolet","engraver",
+    "engulf","enhance","enjoy","enliven","enraged","ensemble","ensue","enter",
+    "enterprise","enthusiastic","entrap","entrepreneur","entropy","entry","enumerate","envious",
+    "environment","environmentalscientist","environmentvariable","envision","enzyme","eon","ephemeral","epicenter",
+    "epicorchestral","epidemic","epimedium","epoch","epoxy","equal","equation","equatorial",
+    "equatorialguinea","equestrian","equestrianpolo","equilibrium","equinox","equip","era","erbium",
+    "eritrea","ermine","erode","erodible","erosion","erred","error","erupt",
+    "escabeche","escargot","escarpment","esfahan","esker","espadrille","espresso","essay",
+    "essen","establish","esteem","esthetician","estonia","estuary","eswatini","ether",
+    "ethereal","ethernet","ethical","ethiopia","ethnobotany","eucalyptus","euphorbia","europium",
+    "evade","evaluate","evaporation","evapotranspiration","evasive","evening","eveninggown","eveningprimrose",
+    "event","eventhorizon","eventing","eventloop","eventplanner","everglade","evergreen","every",
+    "evict","evocative","evoke","evolution","evolve","exact","exalt","examine",
+    "example","exasperate","exasperated","excavator","exceed","excel","excellent","exception",
+    "exchange","excited","exciting","execute","exemplary","exerciseshorts","exert","exeter",
+    "exhaust","exhausted","exhaustive","exhibit","exhilarate","exist","exoplanet","exothermic",
+    "expand","expansionsaw","expansive","expel","experience","experiment","explain","explicit",
+    "exploit","explosionproof","exponent","exponential","export","express","expression","expressive",
+    "expresstrain","expunge","extend","extensible","extension","extensionbit","extensioncord","exterminator",
+    "extinction","extinctvolcano","extractionfan","extraordinary","extravirigin","extremadura","exuberant","exude",
+    "eye","eyebolt","eyelash","eyelet","eyelid",
+  },
+  F={
+    "fable","fabulous","face","faceshield","facet","facilitate","fact","factor",
+    "factorial","faded","fado","failsafe","fair","fairweather","faisalabad","faithful",
+    "fajitas","falafel","falcon","falconry","fallow","falseindigo","falter","familiar",
+    "famished","famous","fan","fanatic","fancy","fandango","fanfare","fannypack",
+    "fantastic","fantasy","farce","farmer","farro","fascinate","fashiondesigner","fastenertool",
+    "fathom","fatigue","fatseparator","faucet","fault","faultline","faulty","favor",
+    "fearful","fearless","fearsome","feast","featherboard","feature","featureflag","february",
+    "fedora","feed","feedback","feedbackloop","feet","feign","feint","feldgrau",
+    "feldspar","fell","feltmarker","femur","fen","fence","fencing","fencingstaple",
+    "fennecfox","fennel","feral","fermentation","fern","ferocious","ferret","ferrule",
+    "ferry","fervent","fester","festival","fetch","fettuccine","feverfew","feverish",
+    "few","fiber","fibula","fiddle","field","fieldgray","fieldhockey","fierce",
+    "fiery","fifteen","fifth","fifty","fig","fightsport","figtree","figureskating",
+    "fiji","filch","file","filingcabinet","fill","filletingknife","filmscore","filmy",
+    "filter","finance","financialadvisor","finch","find","fine","finetooth","finger",
+    "fingerpicking","finish","finishingsaw","finland","fireant","firebrick","firefighter","firefly",
+    "firethorn","firetruck","firewall","firm","firmware","first","fish","fishcake",
+    "fishercaet","fisherman","fishsauce","fishslice","fishtape","fissure","fitnesstrainer","fittingbrush",
+    "five","fivespice","fivetacos","fix","fixedblade","fixedclamp","fixedgear","fixedwrench",
+    "fizzy","fjord","fladisc","flagged","flair","flaky","flamboyant","flame",
+    "flamenco","flamingo","flanders","flannel","flanring","flare","flarejeans","flashflood",
+    "flashlight","flat","flatbar","flatbed","flatbread","flatcap","flatnose","flatwater",
+    "flaw","flax","flaxyellow","fleabane","fleck","fleece","fleer","flesh",
+    "fleurdesel","flexible","flexiblebit","flexibledrive","flexibleshaft","flick","flightattendant","flinch",
+    "fling","flint","flipflops","floatplane","floe","flood","floodbasin","floodgate",
+    "flooding","floodplain","floor","floorboard","floorbuffer","floorscraper","floraldesigner","floraldress",
+    "florence","florentine","flores","florist","flounder","flour","flourish","floursifter",
+    "flout","flow","floweringquince","flowerpot","fluctuate","fluff","fluid","flung",
+    "flunk","fluorescent","fluorine","fluorite","flurry","flushtrim","flute","fluvial",
+    "flyboard","foamroller","foamy","focus","focused","fog","foggy","foiegras",
+    "foist","foldingrule","foldinladder","folio","folk","follow","folly","fondue",
+    "fonduepot","fontina","foodchain","foodcontainer","foodmill","foodprocessor","foodweb","foosball",
+    "foot","football","foothill","foothills","force","ford","forearm","forecast",
+    "forehead","forensicscientist","forest","forester","forestfire","forestgreen","forfeit","forge",
+    "forgehammer","forgetmenot","fork","forklift","forlorn","form","formal","formaltrousers",
+    "formalwear","format","formidable","formula","formularacing","formulate","forsake","forsythia",
+    "fortaleza","forte","forth","forthright","fortissimo","fortnight","forty","fossa",
+    "fossilfuel","foster","found","foundation","four","fourteen","fourth","fox",
+    "foxglove","foxtail","fraction","fractionaldistillation","fracture","fragile","fragrant","frail",
+    "frame","framework","framinganchor","framingbracket","framingclamp","framinghammer","franc","france",
+    "frank","frankfurt","frantic","fraud","fraught","freak","freediving","freejazz",
+    "freeride","freerunning","freestyle","freetown","freewheel","freeze","freezer","freezerbag",
+    "freezingpoint","freezingrain","freightship","freighttrain","frenchbistre","frenchblue","frenchlilac","frenchonion",
+    "frenchrose","frenzy","frequency","fresh","freshwater","friction","frictiondrive","friday",
+    "fridge","fridgedoor","friedchicken","friedegg","friedrice","friendly","frightened","frigidzone",
+    "frilledlizard","frisbee","frisk","fritters","frizzy","frog","fromage","frontal",
+    "frost","frosted","frostline","froth","frothy","froze","frozen","frozenyogurt",
+    "frugal","fruit","fruitbat","fruitcake","fruitful","fruitjam","frump","frustrated",
+    "fryingpan","fuchsia","fudge","fudgebrownie","fuelwood","fugue","fujian","fukuoka",
+    "fulcrum","fulfilled","fulfillment","full","fullchisel","fullcontact","fully","fumble",
+    "fumed","fumes","funafuti","funchal","function","functional","fundamental","funeraldirector",
+    "fungi","funicular","funk","funky","funnel","funny","furcoat","furious",
+    "furniture","fusion","future","futuristic","fuzztesting","fuzzy",
+  },
+  G={
+    "gabon","gaborone","gadget","gadolinium","gainsboro","galactic","galapagos","galaxy",
+    "gale","galette","galicia","gallant","gallbladder","gallium","galway","gambia",
+    "gamboge","gamedesigner","gameengine","ganache","gansu","gap","garb","garbagetruck",
+    "gardenhose","gardenia","gardenshed","garlic","garlicbread","garlicbutter","garliccream","garlicpress",
+    "garnet","garnish","gas","gasdrill","gate","gatevalve","gateway","gather",
+    "gaudy","gaunt","gaura","gavel","gazelle","gazpacho","gclef","geardrive",
+    "gecko","gemologist","geneexpression","genemutation","general","generate","generator","generosity",
+    "genet","genetics","geneva","genial","genoa","genre","gentian","genuine",
+    "geochemistry","geographer","geologictime","geologist","geology","geometry","geomorphic","geomorphology",
+    "geophysicist","geophysics","georgia","geothermal","geranium","germ","germander","germanium",
+    "germany","germination","germtheory","get","geyser","ghana","ghastly","ghee",
+    "gheebutter","ghent","ghost","ghostwhite","ghoul","giantotter","giantpanda","gibbon",
+    "giddy","gifu","gigabyte","giggly","gilamonster","ginger","gingerbeer","gingercake",
+    "ginkgo","giraffe","girth","git","give","given","gizmo","glacier",
+    "glade","gladiolus","gland","glare","glasgow","glass","glassbit","glasscutter",
+    "glassnoodle","glassshelf","glaze","glazeddonut","gleam","gleaming","glean","gleeful",
+    "glib","glide","glider","gliding","glimmer","glissando","glitterboots","gloat",
+    "globalwarming","globeflower","globevalve","gloom","gloomy","glorious","gloryofsnow","gloss",
+    "glossygrape","glove","gloves","glueapplicator","gluebrush","gluegun","glueroller","gluespreader",
+    "gluestick","gluten","gnarly","gnash","gnat","gnome","goal","goat",
+    "goatsbeard","goball","gocar","gochujang","goggle","gokarting","gold","goldenbarrel",
+    "goldenchain","goldeneagle","goldenrod","golem","golf","golfcart","goliath","goliathbeetle",
+    "gondola","good","gooseberry","gopher","gorge","gorilla","gosling","gospel",
+    "gothenburg","gouda","gouge","gougingelectrode","goulash","govern","governing","gown",
+    "gpu","gpucluster","graceful","gracenote","gracious","gradient","gradual","graduationgown",
+    "graintruck","grainymustard","grand","grandiose","granite","granitedome","grannysmith","granola",
+    "grape","grapefruit","grapefruitspoon","grapejam","grapejelly","grapeseedoil","graph","graphicdesigner",
+    "graphics","grapple","grasp","grassgreen","grasshopper","grassland","grateful","grater",
+    "gratitude","graupel","grave","gravel","graveltruck","gravitational","gravity","gravlax",
+    "gravy","gray","grayfish","grayish","grayishpurple","graz","graze","greasefitting",
+    "greasenipple","great","greatdane","greece","greed","green","greencurry","greenmamba",
+    "greenmango","greenonion","greensalsa","greentea","greet","grenada","griddle","grief",
+    "grieve","grieving","grill","grilledcheese","grilledcorn","grilledfish","grilledlamb","grillingtong",
+    "grim","grime","grimly","grimy","grinder","grinderdisco","grinderguard","gripe",
+    "grippliers","gristle","grits","gritter","gritty","grizzly","grizzlybear","groin",
+    "groom","groove","groovebit","grotto","groundbreaking","groundfog","groundhog","groundskeeper",
+    "groundtruth","groundwater","grouper","grouse","grout","groutinggun","grove","grow",
+    "growl","growth","grudge","gruel","gruff","grullo","grunge","grunion",
+    "gruyere","gruyerecheese","guacamole","guadalajara","guangdong","guangzhou","guard","guardrail",
+    "guatemala","guava","guidance","guide","guiderail","guideroller","guile","guilin",
+    "guilty","guinea","guineahen","guitar","guitarfish","guitarriff","guitarsolo","guizhou",
+    "gulch","gulf","gully","gulpereel","gum","gunmetal","gunnera","guppy",
+    "guru","gust","gusto","gusty","gutsy","guwahati","guyana","gwangju",
+    "gymkhana","gymnastics","gymshorts","gyoza","gyozapress","gypsophila","gypsum","gyrocompass",
+  },
+  H={
+    "habitat","habitual","haboob","hacksaw","hacksawblade","haddock","hafnium","haggis",
+    "haifa","hail","hailstone","hailstorm","hainan","hair","hairdresser","haiti",
+    "halal","half","halflife","halibut","halite","hallmark","halloumi","hallowed",
+    "halter","haltertop","ham","hamamatsu","hamburg","hammer","hammerhead","hammerjump",
+    "hammerthrow","hamper","hamsandwich","hamster","hamstring","hand","handball","handgliding",
+    "handle","handlegrip","handlevel","handrouter","handsaw","handscraper","handshears","handspade",
+    "handtowel","handyman","hanger","hangglider","hanginglamp","hanoi","haploid","happy",
+    "harare","harass","harbin","harbor","harbormaster","harborporp","hard","hardhat",
+    "hardpan","hardscape","hardware","hardwood","hardworking","hardycyclamen","harissa","harissapaste",
+    "harmattan","harmonic","harmonica","harmonious","harmony","harness","harp","harpsichord",
+    "harpyeagle","harrisburg","harsh","hartford","harvest","harvestgold","hash","haste",
+    "hasty","hat","hatch","hatchetblade","hateful","hatiora","haughty","haunt",
+    "havana","have","haven","hawk","haworthia","hawthorn","hazard","hazardous",
+    "haze","hazed","hazel","hazelnut","hazelnutbutter","head","headband","header",
+    "headland","healthinspector","healthy","heap","hear","heart","heartfelt","heartrending",
+    "hearty","heatblower","heatdiffuser","heatgun","heath","heather","heathland","heatindex",
+    "heattransfer","heatwave","heavenlybamboo","heavy","heavyduty","heavymetal","heavyrain","hebei",
+    "hectic","hedged","hedgehog","heel","hefei","hefty","height","heilongjiang",
+    "heist","helenium","helicopter","heliotrope","helium","hellbender","hellebore","helleborus",
+    "helmed","helmet","help","helped","helpful","helsinki","hematite","hemoglobin",
+    "henan","hence","hensandchicks","hepatica","hepatitis","heptathlon","herbalist","herbicide",
+    "herbs","herbstripper","herded","heredity","heritage","hermitcrab","heroic","heron",
+    "herring","heterozygous","heuristic","hexagon","hexbolt","hexdriver","hexkey","hexwrench",
+    "hibachi","hibernation","hibiscus","hidden","hidemallet","hierarchy","highaltitude","highavailability",
+    "highheels","highjump","highland","highlandarea","highlift","highlight","highpressure","highspeedbit",
+    "hightide","hijab","hikingboots","hikingvest","hilarious","hill","himalayanpoppy","hindrance",
+    "hinged","hip","hipbone","hiphop","hippopotamus","hiroshima","historian","historic",
+    "hoard","hoary","hobart","hockey","hoe","hognosesnake","hohhot","hoisin",
+    "hoist","hokey","hold","holesaw","holiday","holistic","hollandaise","hollow",
+    "hollowbit","hollowchisel","holly","holmium","hologram","homemaker","homeostasis","homer",
+    "homey","honduras","honest","honey","honeycake","honeydew","honeydipper","honeymustard",
+    "honeysuckle","hongkong","honiara","honingsteel","honolulu","honshu","hoodedscarf","hoodie",
+    "hoodledseal","hoodwink","hook","hooky","hoopoe","hopeful","hopeless","horde",
+    "horehound","horizon","hormone","horn","hornbill","hornedtoad","hornet","hornsection",
+    "horrid","horrified","horse","horsepolo","horseradish","horseradishsauce","horseshoecrab","horsetail",
+    "horticulturist","hosebib","hoseclamp","hosecoupler","hosefitting","hosenozzle","hosereel","hospitalgown",
+    "hosta","hostcell","hostile","hotchocolate","hotcoral","hotdog","hotelmanager","hotly",
+    "hotmagenta","hotpants","hotpink","hotsauce","hotspot","hotspring","hotstamp","hotwaterbottle",
+    "hotwire","hour","hourly","houseleek","houston","hoverboard","hovercraft","hovertrain",
+    "howl","howlermonkey","hoya","html","http","huaraches","hub","hubbub",
+    "hubby","hubei","huddled","huevorancheros","huffed","huge","humanresources","humble",
+    "humbled","humerus","humid","humidity","hummed","hummingbird","hummock","hummus",
+    "humorous","humpback","humph","humps","humus","hunan","hundred","hungary",
+    "hunkered","huntergreen","hurdles","hurling","hurricane","husky","hussy","hustle",
+    "hutch","hyacinth","hybrid","hybridization","hyderabad","hydra","hydrangea","hydration",
+    "hydraulic","hydraulicengineer","hydraulicjack","hydrodynamics","hydrofoil","hydrogen","hydrologist","hydrology",
+    "hydrolysis","hydrometer","hydronic","hydroplane","hydrosphere","hyena","hymn","hype",
+    "hyperbola","hyperlink","hypersonic","hypertension","hypnotic","hypothesis","hypothetical",
+  },
+  I={
+    "iasi","ibadan","ibis","iceage","iceberg","iceblue","iceboat","icebreaker",
+    "icebucket","icecap","iceclimbing","icecreamcake","icecreamtruck","icecrystal","icefield","icefishing",
+    "icefloe","icefog","iceland","icepellets","iceshelf","iceskates","icestorm","icetool",
+    "icily","icing","icingbag","icon","icons","ide","idea","ideal",
+    "idealistic","identify","idiom","idyll","igloo","ignored","iguana","ikebana",
+    "illicit","illustrator","illustrious","image","imaginative","imagine","imbue","immense",
+    "immigrationofficer","imminent","immortaljellyfish","immovable","immune","immuneresponse","immutable","impact",
+    "impactbit","impactdriver","impactful","impactgun","impactnailer","impactsocket","impactwrench","impala",
+    "impartial","impatiens","impatient","imperative","imperious","impermeable","implacable","implant",
+    "implement","implosion","imply","import","important","imposing","impractical","impressive",
+    "improve","improvement","improvisation","impulsive","impure","inane","inbox","incessant",
+    "incheon","incline","inclusive","incorporate","increase","incredible","incur","incursion",
+    "independent","independentvariable","index","india","indianhawthorn","indianred","indianyellow","indicate",
+    "indicator","indicatorlight","indifferent","indigo","indium","indonesia","indoor","indoorclimbing",
+    "indoorsoccer","indore","indri","induction","indulgent","indycar","inequality","inert",
+    "inertia","inevitable","inference","infillpanel","infinity","inflamation","inflammation","influence",
+    "inform","information","infosec","infrared","infraredgun","infrastructure","infuriate","infuse",
+    "infusedoil","ingenious","inheritance","initiate","injection","inked","inlay","inlet",
+    "inmemory","innate","inner","innertube","innovative","innsbruck","inorganic","input",
+    "insertbit","inset","insight","insightful","inspectionmirror","inspector","inspired","install",
+    "instant","instill","instructor","insulationcutter","insulationknife","insulationtool","insulin","insuranceagent",
+    "integer","integral","integrate","integration","integrationtest","intelligent","intense","intent",
+    "inter","interact","intercept","interceptor","interest","interesting","interface","interiordesigner",
+    "internet","interpreter","interstellar","intertidal","intertidalzone","interurban","interval","intestine",
+    "intrepid","intrinsic","intro","introduce","intrusive","intuitive","inventive","inventorymanager",
+    "inverness","inversion","invert","invertedindex","invested","investigate","investigator","invincible",
+    "invulnerable","iodine","ionic","ionicbond","ionization","iot","iquique","iran",
+    "iraq","irate","irbid","ireland","iridium","iris","irisbluie","irk",
+    "irksome","iron","ironclad","ironingboard","ironman","ironworker","irrational","irreplaceable",
+    "irresistible","irritated","isfahan","island","islandarc","islet","isomorphic","isostasy",
+    "isotope","isotopetrace","israel","issue","istanbul","isthmus","italy","itchy",
+    "itea","ivory","ivy","izmir",
+  },
+  J={
+    "jabber","jabiru","jabsaw","jackal","jacket","jacketclamp","jackfruit","jackingplate",
+    "jackpot","jackson","jacksonville","jacobladder","jade","jaded","jagged","jaguar",
+    "jaipur","jakarta","jalapeno","jalapenopopper","jam","jamaica","jamb","jambs",
+    "jamjar","jamsession","jangle","janitor","january","japan","japaneseaemon","japanesemacaque",
+    "japanesemaple","jar","jargon","jarred","jarring","jasmine","jasminerice","jasper",
+    "jaunt","jaunty","java","javelin","jaw","jazz","jazzswing","jazzy",
+    "jealous","jeans","jeddah","jeep","jelly","jellybean","jellyfish","jeopardize",
+    "jerk","jerked","jerky","jersey","jerusalem","jest","jester","jet",
+    "jetski","jetstream","jettison","jeweled","jeweler","jewelersfile","jiangsu","jiangxi",
+    "jigborer","jigsaw","jilin","jilted","jinan","jingle","jitter","jittery",
+    "jiujitsu","jockstrap","jocular","jocund","jogged","joggingpants","johannesburg","joinery",
+    "joint","jointcutter","jointer","jointfiller","jointsealant","joisthanger","jokingly","jolly",
+    "jolt","jolted","jordan","journal","journalist","joust","jousting","jovial",
+    "joyful","joyous","joyride","joystick","json","jubilant","judge","judicious",
+    "judo","jug","juicer","juicercup","juicy","july","jumble","jumbled",
+    "jumpjet","jumpsuit","jumpy","junction","juncture","june","jungle","jungleboots",
+    "junglegreen","juniper","junky","jurist","juste","justice","justified","justify",
+    "juvenile","juxtapose",
+  },
+  K={
+    "kabul","kaffir","kaftan","kakapo","kalanchoe","kale","kaleidoscope","kalimantan",
+    "kalmia","kamchatka","kampala","kangaroo","kangaroopaw","kanpur","karachi","karate",
+    "karelia","karst","kart","kashmir","kathmandu","kayak","kayaking","kayakpolo",
+    "kazakhstan","kazan","kebab","kedgeree","keel","keen","keenness","keep",
+    "kelp","kelpforest","kendo","kenya","kernel","ketch","ketchup","kettle",
+    "key","keyboard","keychange","keyedchuck","keyholder","keysignature","keystone","keywaybroach",
+    "khaki","kickbackguard","kickboxing","kickstand","kidney","kigali","killzone","kilt",
+    "kimchifriedrice","kimono","kind","kindle","kindness","kindred","kinetic","kinetics",
+    "kingdom","kingfisher","kinkajou","kinky","kinshasa","kinship","kiosk","kiribati",
+    "kirkcaldy","kitchenbench","kitchenclock","kitchenschale","kitchenshears","kitchensink","kiteboarding","kitehawk",
+    "kitty","kiwi","kleptomania","kleptomaniac","klutz","klutzy","knack","knapweed",
+    "knave","knee","kneeboarding","kneecap","kneehighboots","kneel","kneepads","knell",
+    "knelt","knick","knickers","knife","knifeblock","knifefish","kniferack","knifesharpener",
+    "knight","knightly","kniphofia","knithat","knob","knobset","knock","knoll",
+    "knot","knotted","knotty","know","knowing","knowledge","knowledgeable","known",
+    "knuckle","koala","kobe","kobi","kohlrabi","kolkata","kombucha","komodo",
+    "konya","kookaburra","korfball","kosovo","kowtow","krakow","krasnoyarsk","krypton",
+    "kualalumpur","kubernetes","kudos","kudu","kudzu","kumamoto","kumbaya","kunming",
+    "kuwait","kyiv","kyoto","kyrgyzstan","kyushu",
+  },
+  L={
+    "labapron","labcoat","label","laborer","labrador","labyrinth","lacedress","laceration",
+    "laconic","lacrosse","lacustrine","ladder","laden","ladle","ladybug","lagging",
+    "lagoon","lagos","lahore","lake","lakebed","lakeeffect","lakestrugeon","laksa",
+    "lamb","lambchop","lambkofta","lambshank","laminatebit","laminatecutter","laminateroller","lamp",
+    "lamprey","lancaster","lanced","lancetfish","landbreeze","landbridge","landform","landmark",
+    "landsailing","landscape","landscapearchitect","landslide","languidlavender","languish","lanky","lantana",
+    "lanternfish","lanzhou","laos","lapbelt","lapse","lard","large","lark",
+    "larkspur","larynx","lasagna","laser","lasercutter","laserdot","laserguide","laserlemon",
+    "laserlevel","laserline","lasermarker","lasermeasure","laserpunch","lasersailing","laserspirit","lash",
+    "lasting","latch","latency","latent","lateral","laterite","latin","latinjazz",
+    "latitude","latke","lattice","latvia","laud","laudable","launceston","launch",
+    "laundrybag","lausanne","lava","lavadome","lavaflow","lavatube","lavender","lavenderblue",
+    "lavish","lawyer","layered","lazyloading","lead","leadbender","leadcutter","leafcutterant",
+    "leafgreen","leafy","leaky","lean","leansoil","leapt","leapyear","learn",
+    "least","leatherback","leatherfern","leatherjacket","leatherpants","lebanon","lecturer","ledge",
+    "leeds","leek","leg","legalassistant","legendary","leggings","legitimate","leicester",
+    "leitmotif","lemming","lemon","lemonchiffon","lemoncurd","lemonginger","lemonreamer","lemonshark",
+    "lemonsqueezer","lemontart","lemonzest","lemur","lenient","lens","lentenrose","lentil",
+    "lentilsoup","leon","leopard","leopardgecko","leopardseal","lesion","lesotho","less",
+    "lethaldose","lettuce","leucanthemum","leucothoe","levee","level","lever","leverage",
+    "leverkusen","liaoning","liatris","liberal","liberate","liberia","librarian","library",
+    "libreville","libya","licorice","lid","liechtenstein","liege","lifeboat","lifecycle",
+    "lifeguard","ligament","liger","lightblue","lightbulb","lightcoral","lightcream","lightcyan",
+    "lightgray","lightgreen","lighthearted","lightning","lightningbolt","lightningrod","lightpink","lightrail",
+    "lightseagreen","lightskyblue","lightslategray","lightswitch","lightyear","lightyellow","ligularia","lilac",
+    "lillyofvalley","lilongwe","lily","lima","lime","limejuice","limestone","limestonecave",
+    "limit","limited","limitless","limnology","limonium","limousine","limpet","limy",
+    "line","linear","linen","linencloset","linensuit","linger","linguine","linguist",
+    "liningtool","link","linkoping","linting","linux","lion","lionfish","lip",
+    "lipid","lipseal","liquid","liquidtool","lisbon","lisianthus","listen","listless",
+    "lithe","lithium","lithosphere","lithuania","litterbox","littleowl","littoral","live",
+    "lively","liver","liverpool","livid","lizard","llama","loadbalancer","loadcell",
+    "loadtesting","loafer","loam","loamysoil","lobe","lobelia","lobster","lobsterbisque",
+    "lobstercracker","lobsterroll","localhost","lock","lockingclamp","lockingpin","lockingpliers","lockingscrew",
+    "locksmith","locomotive","lodz","loess","lofi","lofty","log","logarithm",
+    "loggedarea","loggerhead","logical","logisticsmanager","loincloth","lombok","lome","london",
+    "lonely","lonesome","long","longboat","longboots","longgrain","longhandle","longitude",
+    "longjohn","longjump","longnose","longnosecar","longreach","longsleeve","loom","looming",
+    "loon","loop","loopclamp","loopy","loose","lorikeet","loris","lorraine",
+    "lorry","losangeles","lose","loss","lossless","lotus","lotusroot","loud",
+    "loungewear","louse","lousy","loving","low","lowland","lowly","lowlying",
+    "lowpressure","lowrider","lowtide","lowvolt","lox","loyal","loyalty","luanda",
+    "lubeck","lublin","lubricant","lucid","lucknow","lucrative","luge","lugnut",
+    "lumberjackshirt","luminous","lumpy","lunar","lunarrover","lunarsoil","lung","lungwort",
+    "lupine","lurk","lusaka","lust","luster","lusty","lute","lutetium",
+    "luxembourg","luxuriant","luzon","lviv","lychee","lychnis","lydian","lymph",
+    "lynx","lyon","lyre","lyric","lyrical","lythrum",
+  },
+  M={
+    "macadamia","macadamiacookie","macaroon","macau","macaw","macchiato","mace","machine",
+    "machinecode","machinelearning","machineoperator","macho","mackerel","macos","macro","macroburst",
+    "madagascar","madder","madly","madrid","madurai","magenta","magical","magma",
+    "magnanimous","magnesium","magnetic","magneticbase","magneticchuck","magneticclamp","magneticfield","magnetism",
+    "magnetite","magnetosphere","magnificentfrigatebird","magnolia","mahimahi","mahogany","mailbox","maim",
+    "mainly","maintain","maintainability","maize","majolica","major","majuro","make",
+    "malabo","malachite","malaga","malawi","malaysia","maldives","mali","malign",
+    "malignant","mallet","mallow","malmo","malta","maltedmilk","malware","mammatus",
+    "manage","manager","managua","manatee","manchego","manchuria","mandalay","mandarin",
+    "mandarinduck","mandevilla","mandible","mandolin","mandreldriver","manganese","mango","mangochutney",
+    "mangosalsa","mangotango","mangrove","manic","manifest","manila","manipulate","manly",
+    "mannheim","manta","mantaray","mantis","mantle","many","maple","mapleglaze",
+    "maplesyrup","maputo","marathon","marbella","marble","marblerollingpin","march","marengo",
+    "margintrowel","marigold","marimba","marinatedchicken","maritimeofficer","marked","marketer","marlin",
+    "marmalade","marmoset","marmot","maroon","marrakech","marrow","marseille","marsh",
+    "marshallislands","martialarts","martrathon","marvelous","marzipan","masala","masalachai","maseru",
+    "mashedpotato","masher","maskingtape","masonline","masonrydrill","masonrysaw","mass","massagetherapist",
+    "massive","mastclamp","masterful","masterwort","matamoros","matcha","matchalatte","mated",
+    "maternitydress","mathematician","matrix","matted","mattress","maul","mauritania","mauritius",
+    "mauve","maximize","maximumblue","maxiskirt","may","mayonnaise","mazatlan","mbabane",
+    "meadow","meager","mealy","meaning","meaningful","means","measure","measuringcup",
+    "measuringtape","meatgrinder","meatmallet","meatthermometer","meaty","mecca","mechanic","mechanicaladvantage",
+    "medan","medblue","medellin","medgray","medgreen","median","mediator","medicinecabinet",
+    "medina","meditative","medleyswimming","medorchid","medpurple","medred","medviolet","meek",
+    "meerkat","meet","megamouthshark","megaramp","megayacht","meiosis","melancholic","melancholy",
+    "melbourne","melodic","melody","melon","melonballer","melonred","meltingpoint","meltingpot",
+    "membrane","memorial","memory","memoryleak","menacing","meniscus","menstruation","mentorship",
+    "merciful","mercury","mercy","merida","meringue","merit","meritorious","merlot",
+    "merry","mesa","meshtop","messagequeue","messy","metabolic","metabolicrate","metabolism",
+    "metacarpal","metadata","metalchisel","metalcore","metalcutter","metalfile","metalfolding","metalgauge",
+    "metallurgist","metalpunch","metalshear","metalshelf","metalstamp","meteor","meteorite","meteorologist",
+    "meteorology","method","methodical","meticulous","mexicanpetuna","mexico","mezzo","miami",
+    "mica","michaelmasday","microburst","microchip","microclimate","micrometer","micrometermeasure","micronesia",
+    "microorganism","microphone","microplane","microprocessor","microscope","microservice","microwave","middleware",
+    "midi","midlands","midnight","midnightblue","midnightgreen","midpoint","midst","midwife",
+    "mighty","migraine","migration","migwelder","milan","milestone","militarytruck","milkchocolate",
+    "milkfrother","milkjug","milksnake","milkweed","milkyway","millcutter","millennium","million",
+    "mimicoctopus","mind","mindanao","mindful","mineral","minestrone","minidress","minification",
+    "minigolf","minimal","minimize","miningengineer","minionyellow","miniskirt","minister","minivan",
+    "mink","minneapolis","minor","minsk","mint","mintgreen","minute","mirabilis",
+    "miracle","mire","mirror","mirrorframe","mirth","miser","miserable","miskolc",
+    "miso","misopaste","misoramen","mist","mistletoe","misty","mite","miterbox",
+    "mitersaw","mitochondria","mitosis","mittens","mixedberries","mixedforest","mixerstand","mixing",
+    "mixingbowl","mixture","mobile","mobilecrane","moccasin","mocha","mochacake","mockneck",
+    "mocktest","mockup","modal","modaljazz","moddress","mode","model","modem",
+    "modena","moderate","modern","modernbiathlon","modest","modulation","module","mogadishu",
+    "mogul","moguls","mohsscale","moist","moisture","molar","molarmass","molasses",
+    "moldavia","moldingrouter","moldova","moldy","mole","molecricket","molecularbiology","molecule",
+    "molinillo","mollusk","molten","moltencake","moluccas","moluccella","molybdenum","momentous",
+    "momentum","momogrammed","monaco","monarchbutterfly","monarda","monday","mongolia","mongoose",
+    "monitor","monitorlizard","monkey","monkfruit","monkshood","monofilament","monorail","monrovia",
+    "monsoon","montbretia","montenegro","monterrey","montevideo","month","monthly","montpellier",
+    "montreal","montreux","monumental","moody","moon","moonflower","moonstone","moor",
+    "moorland","moose","mop","mopbucket","moped","moraine","moravia","moray",
+    "morayeel","more","morel","morning","morningdew","morningfog","morningglory","morocco",
+    "moroni","mortal","mortar","mortarboard","mortician","moscow","moss","mossy",
+    "most","mostly","moth","motherboard","motherwort","motif","motivate","motivated",
+    "motocross","motorbike","motorboat","motorcycle","motorhome","motorsport","mottled","mount",
+    "mountain","mountainbike","mountainbiking","mountainboarding","mountainchain","mountaingorilla","mountainlion","mountainmeadow",
+    "mountbrace","mountingscrew","mourn","mouse","mousse","moussering","mousy","mouth",
+    "move","movement","mozambique","muaythai","mucky","muddy","mudflat","mudflow",
+    "mudknife","mudpuppy","mudrock","mudrun","mudskipper","mudvolcano","muffin","muffintin",
+    "mug","muggy","mulberry","mule","muledeer","mulled","mullein","multan",
+    "multiangle","multicloud","multifaceted","multimeter","multiple","multipurpose","multitenant","multitrack",
+    "multiverse","mumbai","munich","murcia","murky","murrey","muscari","muscat",
+    "muscle","mushroom","mushroomrisotto","mushy","musicaltheater","musicbox","musician","musicologist",
+    "muskox","mussel","mustard","mustardvinaigrette","muster","mutation","muted","mutual",
+    "muumuu","myanmar","myrtle","myrtlegreen","mystify",
+  },
+  N={
+    "naanbread","nachochips","nachos","nadir","nagaland","nagasaki","nagoya","nagpur",
+    "nail","nailgun","nailplate","nailset","nailtechnician","nairobi","naive","namebadge",
+    "namespace","namibia","nampla","nanjing","nanny","nantes","napacabbage","napkin",
+    "naples","napoleonpastry","nappy","narcissus","narrow","narrowboat","narrows","narwhal",
+    "nashville","nasturtium","nasty","nativehabitat","natty","natural","naturalarch","naturallanguage",
+    "naturallog","naturalselection","nature","naturereserve","nauru","navarre","navel","navigate",
+    "navigator","navy","naypyidaw","ndjamena","nebula","necessary","neck","necklace",
+    "necktie","nectarine","need","needlefile","needlenose","nefarious","negative","negotiate",
+    "neither","neoclassical","neodymium","neon","nepal","nepeta","neptunium","nerve",
+    "nervous","nervy","nestingbit","netball","netherlands","nettle","network","networkaddress",
+    "neuralnet","neuralnetwork","neurological","neurosurgeon","neutral","neutron","never","newcastle",
+    "newdelhi","newfound","newsboycap","newt","newton","newwave","newyork","nft",
+    "ngerulmud","niamey","nibblertools","nicaragua","nice","nicer","nickel","nicosia",
+    "nifty","niger","nigeria","night","nightcap","nightfall","nightfrost","nightgown",
+    "nightingale","nightly","nightphlox","nightstand","nigiri","nilecrocodile","nimble","nimbostratus",
+    "nimbus","nine","nineteen","ninety","ninth","niobium","nippy","nitrogen",
+    "nlp","noble","nobly","noctilucent","nocturnal","node","noise","noisy",
+    "nomad","nonchalant","nonconformist","none","nonrenewable","noodle","noon","noose",
+    "nordicombined","nordicskiing","noreaster","nori","normandy","northeast","northerly","northernlights",
+    "norway","nose","nosebit","nosecone","nostalgic","nostril","notable","notary",
+    "notation","notch","notchcutter","noted","noteworthy","notice","notification","notify",
+    "notorious","nouakchott","nougat","nourish","nova","novel","november","novgorod",
+    "novice","noxious","nuanced","nuclearengineer","nuclearfission","nuclearfusion","nuclearsub","nucleotide",
+    "nucleus","nude","nudge","nuked","null","numbat","numbing","numerator",
+    "numerous","nunatak","nuremberg","nurse","nurseshark","nursingstrubs","nurture","nurturing",
+    "nutbutter","nutcracker","nutdriver","nutmeg","nutmilk","nutria","nutrition","nutritionist",
+    "nutsetter","nuuk","nymph",
+  },
+  O={
+    "oak","oasis","oat","oatbran","oatflour","oatmealcookie","oauth","obedientplant",
+    "obese","obesity","object","objective","objectivelens","obligate","oboe","observability",
+    "observant","observation","obsidian","obstaclechourse","obstetrician","obstinate","obtain","obvious",
+    "occur","ocean","oceanfloor","oceanliner","oceanographer","oceanrowing","ocelot","ochre",
+    "octagon","octave","october","octopus","octopussushi","odder","oddly","odessa",
+    "odious","oenothera","offbeat","offchain","offended","offer","officer","offroad",
+    "offset","offsetbit","often","ohm","oilstone","okinawa","oldfield","oldgrowth",
+    "olive","oliveoil","olivetree","olivine","olm","olympicboxing","oman","omeletpan",
+    "ominous","omsk","once","oncology","one","onepieced","onion","oniongoggle",
+    "onpremise","onset","ontario","onyx","ooze","opah","opal","opaque",
+    "open","openai","openend","openminded","openocean","opensource","openssl","openswimming",
+    "opentoe","opera","operatingsystem","operation","opinionated","opossum","opportunity","oppose",
+    "oppressive","opted","optic","optical","optician","optics","optimistic","optimization",
+    "optimize","option","optometrist","oracle","oradea","orange","orangeblossom","orangecake",
+    "orangeglaze","orangutan","orate","orbit","orbital","orbitaldrill","orbitalsander","orchestra",
+    "orchestrapit","orchid","orchidmantis","ordeal","order","orderly","oregano","orenburg",
+    "organ","organic","organicchemistry","organicmatter","organism","organize","orienteering","original",
+    "oriole","orlando","orm","orthodontist","orthopedic","orthopedicsurgeon","oryx","osaka",
+    "oscarfish","oscillator","oslo","osmium","osmosis","osmoticpressure","osprey","osteopath",
+    "osteoporosis","ostinato","ostrich","other","ottawa","otter","ouagadougou","oulu",
+    "outback","outcome","outcrop","outdo","outdoorvest","outer","outgoing","outlaw",
+    "outlet","outletbox","outperform","output","outrageous","outrigger","outrigging","outro",
+    "outrun","outspoken","outwash","outwit","ovarian","oven","overalls","overcast",
+    "overcoat","overcome","overdose","overgrazing","overhang","overheadcrane","overlook","overpower",
+    "oversizebit","overture","overview","overwhelmed","ovoid","ovum","owl","owletmoth",
+    "ownership","oxbow","oxbowlake","oxford","oxfordshirt","oxidation","oxidationstate","oxide",
+    "oxygen","oxygenlance","oxygenwelder","oyster","oysterknife","oystersauce","oystershucker","ozone",
+  },
+  P={
+    "paced","paceship","packet","packetloss","packingtool","paddlefish","paddy","padfoot",
+    "padova","padthai","paella","pail","paintbrush","paintedstork","painter","paintroller",
+    "paintscraper","pair","pakistan","palau","palawan","palazzopants","paleontologist","palermo",
+    "palestine","palladium","palletjack","palletruck","pallidbat","palm","palma","palmcockatoo",
+    "pampas","pampasgrass","pamplona","pan","panama","pancake","pancetta","pancreas",
+    "panda","pandemic","paneer","paneertikka","panelcutter","panicked","panlid","pansy",
+    "panther","papaya","paperpunch","papertowel","paphos","pappardelle","paprika","papuanewguinea",
+    "parabola","parachutepants","parachuting","paradisefish","paragliding","paraguay","paralegal","parallax",
+    "parallel","parallelism","paramaribo","paramedic","paramount","parasite","parchment","parentalgeneration",
+    "paris","parka","parkour","parkranger","parma","parmesanrind","parmigiana","parrot",
+    "parsec","parsley","part","partialpressure","participate","particle","particular","partly",
+    "passionate","passionflower","passionfruit","passivetransport","password","past","pasta","pastamaker",
+    "pastrtorch","pastrybag","pastryblender","pastryboard","pastrybrush","pastrycutter","pasty","patagonia",
+    "patch","patchy","pate","patella","patentagent","pathogen","pathologist","patience",
+    "patient","patna","patrolboat","patrolcar","patsy","pattern","paved","pavlova",
+    "payload","pea","peaceful","peach","peachcobbler","peacoat","peacock","peak",
+    "peaky","peanut","peanutbutter","pear","pearl","pearleverlasting","pearloyster","peasanttop",
+    "peasoupfog","peat","pebblebeach","pecan","peccary","pecs","pedalboat","pediatric",
+    "pediatrician","pediment","peeler","peenhammer","pekingduck","pelargonium","pelican","pelota",
+    "pelvis","pen","penang","pencil","pencilcase","pencilskirt","penetratingoil","penetrationtest",
+    "penguin","peninsula","penne","penstemon","pentagon","pentathlon","pentatonic","peony",
+    "peoplemover","pepper","peppergrinder","pepperjack","peppermill","pepperplant","peppy","perceive",
+    "percent","perceptive","perch","percussion","peregrinefalcon","perfect","perforator","perform",
+    "performance","performancetest","perihelion","peril","perimeter","periodiclaw","periodictable","periperi",
+    "periwinkle","perm","permafrost","permeable","permissions","permutation","perpendicular","perplexed",
+    "persevere","persevering","persicaria","persimmon","persistence","persistent","perspective","persuasive",
+    "perth","peru","peshawar","pessimistic","pestle","pesto","petrel","petrified",
+    "petroleumengineer","petticoat","petty","petunias","pewter","phagocytosis","pharmacist","pharmacologist",
+    "pheasant","phenotype","philippines","phlebotomist","phlox","pho","phoenix","phone",
+    "phosphorus","photoframe","photographer","photon","photosphere","photosynthesis","phrase","physalis",
+    "physicalchange","physicaltherapist","physicist","physics","physiotherapy","piano","piccolo","pickle",
+    "pickleball","pickledbeet","pickledginger","pickuptruck","picky","pie","piebird","piecrust",
+    "piedmont","pieris","pierogi","pieserver","pigeon","piggyback","pika","pike",
+    "pillow","pilot","pilotdrill","pinafore","pinch","pindriver","pine","pineapple",
+    "pingauge","pink","pinnacle","pioneering","pipe","pipebender","pipebrush","pipecap",
+    "pipeclip","pipecollar","pipecoupling","pipecutter","pipedrill","pipefile","pipegrinder","pipeholder",
+    "pipeline","pipelocator","pipemachine","pipenipple","pipepadding","pipesealer","pipethread","pipeunion",
+    "pipewrench","piraeus","piranha","pirateship","pistachio","pistachogelato","pistolshrimp","pita",
+    "pitch","pitchbend","pitcher","pitfall","pithy","pittosporum","pivotal","pixel",
+    "pixy","pizza","pizzacutter","pizzadough","pizzapeel","pizzastone","pizzicato","placebo",
+    "placid","plaid","plaidshirt","plaidskirt","plain","plait","plan","plane",
+    "planet","plank","plantcell","plantlife","plantpot","plasma","plasmacutter","plate",
+    "plateau","platelet","platerack","platewarmer","platform","platformshoes","platinum","platycerium",
+    "platycodon","platypus","playa","playful","playsuit","pleased","plierjaw","pliers",
+    "ploiesti","plover","pluck","plug","plugcutter","plugin","plugtap","plum",
+    "plumbago","plumbbob","plumber","plumbertape","plume","plummet","plump","plumwine",
+    "plunder","plungepool","plungerouter","plunk","plush","plutonium","pluvial","plzen",
+    "pneumaticdrill","pneumonia","poach","poachedsalmon","podcar","podgy","podiatrist","pogey",
+    "poinsettia","point","pointbar","pointchisel","poised","pokey","poland","polarbear",
+    "polarice","polarity","polder","polechisel","polenta","polevault","police","policecar",
+    "policy","polished","politician","pollen","pollination","pollinator","pollock","pollution",
+    "polo","poloneck","polonium","poloshirt","polpette","polygon","polygrip","polymer",
+    "polymorphism","polynomial","polyphonic","polyrhythm","pomegranate","pomelo","pompomhat","poncho",
+    "pond","ponder","pontoon","pop","poplar","poppy","poprivet","population",
+    "porcelain","porcupine","pore","pork","porkbelly","porkdumpling","porkrib","porridge",
+    "port","portionscoop","portmoresby","porto","portray","porttool","portugal","portulaca",
+    "portworker","position","positive","postalworker","postholedigger","postrock","pot","potage",
+    "potassium","potato","potatogratin","potatoricer","potatosoup","potential","potentialenergy","potholder",
+    "pothos","potlid","potty","pouchbag","pounce","pouty","powderblue","power",
+    "powerbar","powerbit","powerboat","powerchisel","powerchord","powerdrill","powerful","powergrinder",
+    "powerhammer","powerhone","powerlifting","powerplane","powersander","powershear","powerspanner","powerstrip",
+    "powertrowel","poznan","practice","pragmatic","prague","prairie","praline","pram",
+    "prank","praseodymium","prayingmantis","precipitation","precipitationmap","precise","predictionmodel","preen",
+    "prelude","prepare","preppyshirt","prescription","present","pressure","pressurecooker","pressuresystem",
+    "pretoria","pretzel","prevent","prime","primeval","primrose","principled","printmaker",
+    "prioritize","priority","prism","prisonuniform","privacypolicy","proactive","probability","probationofficer",
+    "probethermometer","problem","process","processthread","produce","producer","product","production",
+    "productive","professional","professor","proficient","profiterole","prognosis","programmer","programming",
+    "progression","progressive","prolific","promethium","prominent","promontory","promote","pronghorn",
+    "proof","proofofconcept","propellerplane","propertymanager","proportion","proportional","propose","prosciutto",
+    "prosthetist","protect","protectedarea","proteinsynthesis","protocol","proton","protonnumber","proud",
+    "prove","provence","provide","prowl","proxy","prude","prudent","prune",
+    "prybar","psychedelic","psychiatrist","psychologist","publichealthworker","publicrelations","publish","pubsub",
+    "puce","pudding","pudgy","puebla","pufferjacket","puffin","pull","pullrivet",
+    "pulmonaria","pulsar","pulse","pumice","pump","pumpkin","pumpkinsoup","pumps",
+    "punchdie","pune","punish","punk","pupil","puppy","purple","purpleyam",
+    "purpose","purposeful","purse","pursue","push","pushblock","pushy","put",
+    "putrajaya","putty","puttyknife","puzzled","pygmy","pygmymarmoset","pygmyowl","pyramid",
+    "pyrite","pyroclastic","python",
+  },
+  Q={
+    "qatar","qinghai","quad","quadbike","quadrant","quadratic","quadrunner","quaff",
+    "quail","quaint","quake","qualified","qualify","quality","qualm","quamash",
+    "quantity","quantitysurveyor","quantum","quantumfield","quantummechanics","quarantine","quarrel","quarter",
+    "quarterly","quarternote","quartet","quartz","quasar","quash","quaver","queasy",
+    "quebec","quedip","quell","quench","querulous","query","quest","question",
+    "quetzal","queue","quezon","quibble","quiche","quickbread","quicken","quicksand",
+    "quicksilver","quiescent","quiet","quinoa","quintessence","quip","quirk","quirky",
+    "quito","quizzical","quoll","quorum","quota","quotidian","quotient",
+  },
+  R={
+    "rabbit","rabble","rabid","raccoon","racecar","racesuit","racewalking","racingbike",
+    "rack","racquetball","radar","radarecho","radiant","radiation","radical","radio",
+    "radioactivity","radiographer","radiologist","radish","radium","radius","radon","rafting",
+    "ragged","ragout","ragtime","ragwort","rain","rainband","rainboots","rainbow",
+    "rainbowlorikeet","raincoat","rainfall","rainforest","raingauge","rainshadow","rainstorm","rainwater",
+    "rainy","raise","raisin","rajasthan","rally","rallycar","rallying","ram",
+    "ramble","ramekin","ramen","rampage","rampant","ranchi","rancid","random",
+    "range","rangeland","ranger","ranunculus","rap","rapid","rapids","rapidtransit",
+    "rapport","rarely","rashy","raspberry","rasping","ratatouille","ratchet","ratchetring",
+    "ratchetstrap","rate","ratio","rational","rattlesnake","ratty","ravage","raven",
+    "ravine","ravioli","raviolicutter","rawalpindi","rayonblouse","razor","reach","react",
+    "reactant","reaction","read","ready","realestateagent","realistic","realtime","reason",
+    "reasoning","rebirth","rebuildkit","receive","receptionist","receptive","recessive","recife",
+    "reciprocatingsaw","reckless","recognition","recognize","recoilstarter","reconcile","recording","rectangle",
+    "recyclingbin","red","redbeanpaste","redcurry","reddwarf","redfox","redgiant","redhotpoker",
+    "redirect","redkite","redpanda","redsalvia","redshift","redsquirrel","redteam","reduce",
+    "reductiongear","redwinevinegar","redwood","reedy","reef","reefshark","refactor","refereeshirt",
+    "refined","reflection","reflective","reflex","refraction","refrain","refreshing","refusecollector",
+    "regal","regex","reggae","reggaeton","regolith","regressiontest","regulate","regulatortool",
+    "rehabilitation","reindeer","reinforcement","reject","relapse","relationship","relativedensity","relativehumidity",
+    "relay","release","relentless","reliable","reliefvalve","relieved","relish","remain",
+    "remainder","remarkable","remedy","remembrance","remorseful","remote","remoteaccess","remotesensing",
+    "remoulade","remove","rend","render","renderengine","renew","renewableenergy","rennes",
+    "renounce","repay","repel","replace","report","repository","represent","reproduction",
+    "repulse","request","require","requirement","rescue","research","researcher","resentful",
+    "resilient","resolute","resolve","resonance","resource","resourceful","respiration","respiratory",
+    "respond","response","responsive","responsiveness","rest","restful","restless","result",
+    "retailmanager","retch","retina","return","reverence","reverseproxy","review","revive",
+    "reykjavik","rhenium","rhinoceros","rhodes","rhodium","rhododendron","rhombus","rhubarb",
+    "rhythm","rhythmicpattern","rib","ribboneel","ribosome","rice","ricecooker","ricepaddle",
+    "rich","rickshaw","ricotta","ridge","ridingboots","ridinghel","ridingpants","riff",
+    "riga","rigatoni","right","righteous","rigid","rigorous","ringclamp","ringcutter",
+    "ringette","ringtailcat","rinse","riparian","ripcurrent","rise","risk","riskmodel",
+    "risky","risotto","ritzy","river","riverbank","riverbed","riverboat","riverdelta",
+    "riverdolphin","rivermouth","riverotter","rivet","rivetgun","rivetingtool","rivulet","riyadh",
+    "roadroller","roadrunner","roadrunning","roadtrain","roanoke","roastedgarlic","roastedveg","robbercrab",
+    "robe","robinegg","robot","robust","rock","rockclimbing","rockcrawling","rocketship",
+    "rockpython","rockrose","rockslide","rocky","role","rollback","rollerbearing","rollerblind",
+    "rollerhockey","rollerskatespeed","rollingpin","rollneck","rollpin","romania","rome","romesco",
+    "romper","roofcutter","rook","roomy","rope","ropy","rose","roseau",
+    "rosebud","rosella","rosemary","rosewood","rostock","rotation","rotorcraft","rotterdam",
+    "rouen","rouge","rough","roughtootheddolphin","roulade","round","router","routerbase",
+    "routerbit","routerjig","rowdy","rowing","rowingboat","royalblue","rubbergloves","rubbergrip",
+    "rubbermallet","rubidium","rubstone","ruby","rudbeckia","ruddy","ruffletop","rug",
+    "rugby","rugbyshirt","rule","ruler","rumcake","run","runabout","runningshoes",
+    "runtime","rushy","russet","russia","russiansage","rust","rusty","ruthenium",
+    "ruthless","rwanda","rye","ryebread",
+  },
+  S={
+    "saas","sabayon","saber","sacramento","sad","safarihat","safe","safety",
+    "safetyclamp","safetygoggles","safetyharness","safetylatch","safetylock","safetyofficer","safetystrap","safetyvest",
+    "saffron","sage","sailboat","sailfish","sailing","sailingregatta","sailor","sailorsuit",
+    "saitama","sakha","sakhalin","salad","saladservers","saladspinner","salamanca","salamander",
+    "salinity","salmon","salsa","saltcellar","saltflat","saltimbocca","saltlake","saltmarsh",
+    "saltshaker","salty","salvia","salzburg","samarium","same","samoa","sampling",
+    "sanaa","sand","sanda","sandal","sandbar","sandboarding","sandbox","sandcastle",
+    "sanddune","sander","sandlizard","sandpaper","sandpiper","sandstone","sandstorm","sandvolleyball",
+    "sandwichmaker","sandysoil","sangria","sanitationworker","santiago","sapphire","sapporo","sappy",
+    "sarajevo","sardine","sardinia","sarong","satay","satellite","satisfied","saturday",
+    "sauce","saucebottle","saucepan","saucer","saucy","sausage","savage","savanna",
+    "savannah","savannawoodland","save","saw","sawblade","sawfish","sawguide","sawhorse",
+    "sawtable","saxophone","scabiosa","scaffold","scale","scaleweight","scallop","scalp",
+    "scaly","scandium","scanner","scant","scared","scarf","scarlet","schedule",
+    "schema","schnitzel","schoolbus","schooluniform","schoolvan","scientificmethod","scientist","scissors",
+    "sclerophyll","scoff","scold","scone","scoop","scooter","scooterrace","scope",
+    "scorch","scoringtool","scorn","scorpion","scour","scout","scowl","scram",
+    "scrap","scraperchisel","screwdriver","script","scrub","scrubland","scrubsuit","scull",
+    "sculptor","sdk","sea","seaarch","seabed","seabreeze","seacliff","seacucumber",
+    "seafloor","seaforkfood","seaholly","seahorse","seal","sealdriver","sealevel","sealinstaller",
+    "sealpuller","seamroller","seaotter","search","searchengine","seasalt","season","seaspray",
+    "seastack","seastorm","seattle","seawater","seaweadsalad","second","secretarybird","sectioncutter",
+    "security","sedan","sedative","sediment","sedum","see","seedy","seem",
+    "seepage","seethe","segment","segway","seismic","seismologist","seismology","seize",
+    "seizure","select","selectivebreeding","selenium","selfdriving","selfheal","semiarid","semiconductor",
+    "semiconductors","semitruck","senator","send","sendai","senegal","sensible","sensitive",
+    "sensitiveplant","sensitivezone","seoul","sepakatakraw","separate","sepia","september","sequence",
+    "sequoia","serbia","serene","serialization","series","serum","serval","server",
+    "service","servicemesh","servingtray","sesame","sesameoil","session","setdesigner","seven",
+    "seventeen","seventh","seventy","several","seville","seychelles","shaanxi","shadow",
+    "shady","shakshuka","shaky","shale","shallot","shandong","shanghai","shankbit",
+    "shanxi","share","shark","sharp","sharpener","shatter","shawarma","sheen",
+    "sheepshead","sheer","sheertop","sheetclamp","sheetcutter","sheffield","shelf","shell",
+    "shellcracker","shenyang","shenzhen","sherbet","sherpa","shiftdress","shikoku","shin",
+    "shinbone","shingle","shinguards","shinwrap","shiny","shipwright","shiraz","shire",
+    "shirt","shitake","shizuoka","shocked","shoebill","shone","shooting","shootingsport",
+    "shore","shoreline","shortbread","shortgrain","shorts","shotput","shoulder","shovel",
+    "show","shower","showercurtain","showerhead","showy","shrew","shriek","shrimp",
+    "shrimpcocktail","shrub","shrug","shuffleboard","shy","sicily","sideangle","sidegrinder",
+    "sidereal","sidewinder","sienna","sierra","sierraleone","sieve","sifter","silesia",
+    "silica","silicon","siliconebrush","siliconelid","siliconemat","silkblouse","silktie","silkworm",
+    "silky","silt","siltbar","silty","silver","silverback","silverbelle","silvercarp",
+    "simferopol","similar","simple","simulate","simulation","sincere","sinew","singapore",
+    "single","singlecut","singlepageapp","singularity","sinister","sink","sinkdrill","sinkhole",
+    "sissy","sitar","situation","six","sixteen","sixth","sixty","ska",
+    "skateboard","skateboarding","skeptical","skewer","skiathlon","skicross","skiing","skijump",
+    "skijumping","skilift","skill","skilled","skillet","skimmer","skimoguls","skin",
+    "skincell","skirt","skisuit","skulk","skull","skunk","sky","skyblue",
+    "skydiving","skyrunning","skytrain","slacks","slalomskiing","slant","slash","slate",
+    "slaughter","slay","sled","sleddog","sledgehammer","sledgehockey","sledrace","sleet",
+    "slicingboard","slick","slide","slime","slimy","slingback","slink","slip",
+    "slipons","slope","sloth","slottedspoon","slough","slovakia","slovenia","slowcooker",
+    "slump","slung","slunk","slur","slush","smart","smartphone","smartwatch",
+    "smog","smoke","smokedsalmon","smokinggun","smolensk","smooth","smoothjazz","smoothslope",
+    "snail","snake","snapcutter","snapdragon","snapper","snare","snark","snarl",
+    "sneakers","snipe","snore","snout","snow","snowadvisory","snowband","snowboarding",
+    "snowburst","snowcap","snowcover","snowcrystal","snowdrift","snowfall","snowfield","snowflake",
+    "snowflurry","snowgauge","snowleopard","snowlevel","snowline","snowmelt","snowmobile","snowpack",
+    "snowplow","snowshoehare","snowshoeing","snowsquall","snowstorm","snowy","soapdish","soapdispenser",
+    "soba","soccer","socialworker","society","sociologist","socket","socketadapter","socketbreaker",
+    "socketholder","socketrail","socketset","socketwrench","socks","sodium","sofa","sofacushion",
+    "sofaleg","sofia","softball","softboiled","softlaunch","softrock","softshellturtle","software",
+    "softwareengineer","softy","soggy","soil","soilcrust","solar","solarenergy","solarradiation",
+    "solderbar","solderingiron","solderpaste","solderring","solderwire","soldier","solemn","solfege",
+    "solid","solidago","solo","solomonislands","solstice","solution","solve","somalia",
+    "somaliland","somber","sombrero","some","sometimes","sommelier","sonata","song",
+    "sonographer","sonora","sooty","sootyalbatross","soppy","soprano","sorbet","sorrowful",
+    "souffle","soul","sound","soundengineer","soup","soupspoon","source","sourcecode",
+    "sourcecontrol","sourcewater","sourdough","southafrica","southampton","southsudan","southwind","soymilk",
+    "soysauce","space","spacecraft","spaceshuttle","spacetime","spadebit","spaghettiladle","spain",
+    "spanakopita","spandex","spanishmoss","spank","sparrow","spasm","spatula","speak",
+    "spear","spearmint","special","speciation","species","specific","speck","speckledpigeon",
+    "spectacledbear","spectrum","speedboat","speedclimbing","speedskating","speedsquare","speedtrain","speleothem",
+    "spend","spent","spew","sphere","spicegrinder","spicerack","spicerub","spider",
+    "spiderwort","spinach","spinal","spine","spinel","spiny","spinylobster","spiralizer",
+    "spirited","spite","spiteful","split","sponge","spontaneous","spook","spoon",
+    "spoonrest","sportclimbing","sportdiving","sportsbra","sportscar","sportscoach","sportscoat","sportshooting",
+    "sportsjersey","spottedhyena","spout","spraybottle","spraygun","spree","sprig","spring",
+    "springbok","springformpan","springpin","sprint","sprocketwrench","spruce","spunk","spurge",
+    "spurn","spurt","sql","squall","square","squareroot","squash","squat",
+    "squeezerbottle","squid","squirrel","sriracha","ssh","ssl","stable","staccato",
+    "stachys","stack","stagbeetle","stair","stalactite","stalagmite","stalwart","stand",
+    "standard","standardbit","stapelia","staplegun","stapler","star","starfish","stargazerfish",
+    "starjasmine","stark","starling","starnosedmole","start","startergun","startled","stash",
+    "state","statemachine","staticanalysis","staticelectricity","statistics","statuscode","stavanger","stave",
+    "stay","stead","steadfast","steak","stealthy","steamboat","steamedbun","steamengine",
+    "steamer","steamerinsert","steamfitter","steel","steenbok","stellar","stellarwind","stemcell",
+    "steppe","stereo","stern","sternum","stickblender","stickinsect","stickyrice","stiff",
+    "stifle","stilettos","stimulating","stimulus","stingray","stitchdrill","stoat","stockflower",
+    "stockholm","stockings","stockpot","stoic","stoichiometry","stomach","stomp","stonecrop",
+    "stonecutter","stonefile","stonefish","stonefruit","stonegrinder","stonemason","stoneware","stonyground",
+    "stool","storage","storagebox","storagerack","stork","storm","stormcell","stormchaser",
+    "stormdrain","stormsurge","stout","stove","straightedge","straightforward","strainer","strainerbasket",
+    "strait","strangle","strap","straptool","strapwrench","strasbourg","strategic","stratocumulus",
+    "stratum","stratus","straw","strawberry","strawflower","strawhat","stray","stream",
+    "streambed","streaming","streamingapi","streetcar","strength","strengthen","stressed","stricken",
+    "striking","string","stripedhyena","stripedskunk","strippingtool","strong","strontium","structuralengineer",
+    "structure","structured","strudel","stub","stubauger","stubborn","studfinder","study",
+    "stuffy","stunt","stuntplane","stuntriding","sturgeon","subalpine","subarctic","subatomic",
+    "subbass","subduction","subdue","subject","subjective","sublimation","submarine","submersible",
+    "subpar","subroutine","subsidence","subsoil","subtropical","subtropics","succotash","suctiontool",
+    "sudan","sufficient","sugarcookie","sugarshaker","sugarthermometer","suggest","suit","suitable",
+    "suitcase","suite","sulfur","sulky","sum","sumatra","summer","summerstorm",
+    "summit","sumo","sun","sunbear","sunbird","sunblind","sunday","sundress",
+    "sundsvall","sunfish","sunflower","sunlight","sunny","sunrise","sunset","sunshine",
+    "sunspot","superbike","superblyrebird","supercar","supercell","superior","supermass","supernova",
+    "supertanker","supervise","support","surabaya","surat","surfaceflow","surfaceplate","surfacetension",
+    "surfacewater","surfing","surfshorts","surgeon","suriname","surly","surprised","surveyor",
+    "sushi","suspenders","suspension","suspicious","sustainable","suv","suva","suwon",
+    "svalbard","swale","swallowtail","swamp","swampboat","swampland","swan","swansea",
+    "swaziland","sweatband","sweater","sweaterdress","sweatpants","sweatshirt","sweatsuit","sweden",
+    "sweep","sweetalyssum","sweetchili","sweetgrass","sweetmiso","sweetpea","swift","swiftfox",
+    "swimcap","swimdress","swimming","swimsuit","swimtrunks","swing","swingarm","swirl",
+    "swisscheese","switch","switchkey","switzerland","swoon","swoop","swordfish","sydney",
+    "symbiosis","symmetry","sympathetic","symphony","sync","syncopation","syntax","synthesis",
+    "synthesize","synthesizer","syria","syringe","syrup","system","systematic","systemsanalyst",
+    "szczecin",
+  },
+  T={
+    "table","tablecloth","tableknife","tableland","tablesaw","tablespoon","tablet","tabletennis",
+    "tabriz","tackcloth","tacklifter","tacknail","tacky","taco","tactful","tactical",
+    "tacticalvest","taegu","taekwondo","taffy","tagine","tahini","tahinisauce","taichung",
+    "tailbone","tainan","taint","taipei","taiwan","tajikistan","talc","talented",
+    "tallinn","talus","tamale","tamalepie","tamarind","tampere","tan","tandembicycle",
+    "tandemskydiving","tangent","tangerine","tangy","tangysauce","tank","tankcar","tankdress",
+    "tanktop","tansy","tantalum","tanzania","tap","tapemeasure","taperbit","taperreamer",
+    "tapextractor","tapioca","tapiocapudding","tapir","tappingdie","tappinghead","tapwrench","tarantula",
+    "tarawa","tardy","target","targetsport","taroroot","tarpon","tarsal","tarsier",
+    "tart","tashkent","tasmaniandevil","taunt","taupe","tawnyowl","taxadvisor","taxi",
+    "taxonomy","tbar","tbilisi","tchoukball","tcp","teacher","teainfuser","teakettle",
+    "teal","teamhandball","teamrowing","teamwork","teapot","teasel","teaspoon","teatowel",
+    "technical","technician","technique","techno","tectonic","teeth","tegu","tehran",
+    "telemark","telemetry","telescope","tell","tellurium","tempeh","temperateforest","temperature",
+    "template","temple","tempo","tempochange","ten","tenacious","tendon","tennis",
+    "tennisskirt","tenor","tenrec","tense","tensionertool","tenth","tepid","terbium",
+    "teriyaki","teriyakisauce","terminal","terminate","termite","terrace","terracing","terrain",
+    "terrainmapping","terror","testcoverage","textparser","thaibasil","thailand","thallium","thandle",
+    "thankful","theorem","therapist","therapy","thermal","thermalplume","thermalshirt","thermocline",
+    "thermodynamics","thermometer","thessaloniki","thick","thicket","thigh","thimphu","think",
+    "third","thirteen","thirty","thistle","thongs","thorium","thorn","thorough",
+    "those","thought","thoughtful","thousand","thread","three","threshershark","thrice",
+    "throat","throb","throe","throughput","thrush","thuds","thulium","thumb",
+    "thunder","thunderhead","thundersnow","thunderstorm","thuringia","thursday","thwart","thyme",
+    "tianjin","tibet","tibia","tick","tickseed","tidal","tidalcurrent","tidalflat",
+    "tidalforce","tidalinlet","tidalwave","tide","tidepool","tidesurge","tiger","tigersalamander",
+    "tight","tights","tijuana","tilapia","tile","till","timber","timberchisel",
+    "timberrattlesnake","timbersports","timbre","time","timecomplexity","timeless","timeout","timer",
+    "timesignature","timetable","timid","timor","tin","tiramisu","tirana","tiregauge",
+    "tireiron","tireless","tirelever","tissue","titanbeetle","titanium","tithe","toad",
+    "toadflax","toast","toaster","today","toe","toffeee","tofu","toga",
+    "toggleswitch","togo","toiletbrush","toiletpaper","token","tokyo","tolerant","toluca",
+    "tomato","tomorrow","tomsk","tomyum","toned","tonequality","tonga","tongs",
+    "tongue","tool","toolchain","tooth","toothbrush","toothpaste","topaz","topcoat",
+    "tophat","topic","topography","topsoil","torment","tornado","toronto","torquebar",
+    "torquebeam","torquedriver","torqueindicator","torquewrench","torrent","torrentduck","torso","torun",
+    "toucan","touchscreen","touchy","toulon","toulouse","tourbus","touringcar","tourmaline",
+    "towelrail","toxic","toxicologist","toxicology","trace","tracetool","trachea","trackedvehicle",
+    "trackpants","tracksaw","tracksuit","tractor","tractorjack","tradeworker","tradition","traditional",
+    "trailblazer","trailer","trailerhitch","trailrunning","train","trainer","trainingshoes","tram",
+    "trampoline","tranquil","transaction","transcend","transfer","transferpump","transform","transformative",
+    "transistor","transit","translation","translator","transmit","transparent","transpiration","transposition",
+    "trap","trapezoid","trash","trashcan","trauma","travertine","travertinepool","trawler",
+    "tray","traycloth","treacherous","treble","tree","treehopper","treekangaroo","treeline",
+    "treering","trekjacket","tremolo","trenchcoat","triangle","triathlon","tribaldress","tributary",
+    "tricycle","trigger","triggerclamp","triggerfish","trillion","trillium","trimaran","trimrouter",
+    "trinidad","trio","triple","triplejump","triplet","trite","triumph","trivet",
+    "trollius","trombone","trondheim","troopcarrier","trophiclevel","tropical","tropicalbiome","tropicalfruit",
+    "tropicalhouse","tropicalstorm","tropics","troposphere","troth","troubled","trousers","trout",
+    "trowel","truck","true","truffle","truly","trump","trumpet","trumpeterswan",
+    "trunks","trusting","trustworthy","truthful","tshirt","tsquare","tsunami","tuba",
+    "tubby","tube","tubebender","tubecutter","tubedress","tuber","tuckpointer","tuesday",
+    "tuffstone","tufty","tug","tugboat","tugofwar","tuktuk","tulip","tulsa",
+    "tumid","tumor","tumultuous","tuna","tunaroll","tundra","tune","tuned",
+    "tungsten","tunic","tunisia","turban","turbidite","turbine","turboprop","turbulence",
+    "tureen","turin","turkey","turkeybaster","turkeyleg","turkeyroaster","turkmenistan","turku",
+    "turmeric","turmericlatte","turningbar","turnip","turquoise","turtle","turtleneck","turvy",
+    "tushy","tutti","tuvalu","tuxedo","twelve","twenty","twice","twilight",
+    "twistbit","twistdrill","twixt","two","type","typescript","typhoon","typical",
+    "tzatziki","tzatzikistrainer",
+  },
+  U={
+    "uakari","udder","udmurtia","udon","udotherm","ufa","uganda","ukraine",
+    "ukulele","ulaanbaatar","ulcer","ulna","ulster","ultimate","ultra","ultradrill",
+    "ultralight","ultramarine","ultrarunning","ultrasonics","ultrasound","ultraviolet","umber","umbra",
+    "umbrella","umbrellaplant","umea","unbiased","uncertain","uncle","undaunted","undeniable",
+    "under","underbrush","undercroft","undergarment","undergroundriver","undergrowth","underpants","undershirt",
+    "understand","understanding","undue","uneasy","uneven","unfolding","unfurl","unhappy",
+    "unicycle","unicycling","unified","uniform","unifying","union","uniqu","unique",
+    "unison","unitard","unitedarabemirates","unitedkingdom","unitedstates","unittest","unity","universal",
+    "universalgravitation","universe","unlikely","unlimited","unlit","unmanned","unnerve","unprecedented",
+    "unreserved","unripemango","unruly","unshakeable","unstableair","unstoppable","unsung","unwavering",
+    "unyielding","upbeat","update","updraft","upheaval","upland","uplifting","upload",
+    "upright","uproar","upset","upstream","upwelling","uraddal","ural","uranium",
+    "urban","urbanplanner","urbansport","urbanwatershed","urbanwear","urge","url","urology",
+    "uruguay","usb","use","useful","user","userinterface","userstory","usher",
+    "usually","uterus","utilitybar","utilitybelt","utilitycart","utilityjacket","utilityknife","utilityvehicle",
+    "utilize","utter","uzbekistan",
+  },
+  V={
+    "vaccine","vacuum","vadodara","vaduz","vale","valenceelectron","valencia","valerian",
+    "valiant","validate","validated","validation","valletta","valley","valleyfloor","valor",
+    "valuable","value","valvecoretools","valvekey","valvetool","vampirebat","vampiresquid","van",
+    "vanadium","vancouver","vanilla","vanillabean","vanillacake","vanillacustard","vanillaglaze","vanquish",
+    "vanuatu","vapid","vapor","vaporetto","vaportrail","varanasi","variable","variablehawk",
+    "variation","various","varna","varsityjacket","vase","vast","vault","vaulting",
+    "vavepuller","veal","vector","vegetablebroth","vegetablecurry","vegetablepeeler","vegetablestock","vegetation",
+    "vegsteamer","vein","veiny","veld","velocity","velour","velvet","vendorlock",
+    "venerable","venetia","venezuela","vengeful","venice","venison","venom","vent",
+    "veracious","verbena","verge","vermillion","vernal","verniercaliper","veronica","versatile",
+    "verse","version","versioncontrol","vertebra","vertex","verticalobstacle","vest","veterinarian",
+    "vibe","vibrant","vibration","vibrationpad","vibrato","vicar","viciously","victoria",
+    "vicuna","videoeditor","vienna","vientiane","vietnam","view","viewmodel","vigilant",
+    "vigor","vigorous","vikingship","villainous","vilnius","vinaigrette","vinca","vinegar",
+    "vintagecar","vinyljacket","viola","violet","violin","viper","viperfish","viperous",
+    "viral","virile","virologist","virtualization","virtualmachine","virtualreality","virtue","virtuoso",
+    "virtuous","virus","visakhapatnam","viscouslava","vise","visejaw","visemount","vision",
+    "visionary","visit","vital","vitamin","vitoria","vivacious","vivid","vixen",
+    "vladivostok","vocab","vocal","vocalist","vocals","vodka","voicing","voile",
+    "vojvodina","volcanic","volcanicash","volcanicisland","volcano","vole","volgograd","volleyball",
+    "volt","voltage","voltmeter","volume","vomit","voracious","voronezh","vortex",
+    "vowed","vpn","vulgar","vulnerability","vulnerable","vulture",
+  },
+  W={
+    "waddle","waffle","waffleiron","wafflemaker","wager","wagon","wagyubeef","waist",
+    "waistcoat","waiter","wakeboarding","wakesurf","walkingcatfish","wall","wallclock","wallhook",
+    "wallonia","walnut","walnutbrownie","walnutcake","walrus","waltz","wanderingalbatross","wanderingjew",
+    "wane","wanly","want","wardrobe","warehousemanager","warm","warmfront","warmspell",
+    "warmspring","warmth","warplane","warsaw","warship","warthog","warty","wary",
+    "wasabi","washer","washington","wasp","wastebasket","watch","waterbarrel","waterbottle",
+    "waterbuck","waterbus","watercraft","watercress","watercross","watercycle","waterfall","waterhole",
+    "waterhyacinth","waterlily","watermelon","waterpolo","waterproofjacket","watershed","waterskiing","waterspout",
+    "waterstrider","waterway","wavelength","way","weakness","wealthy","weasel","weather",
+    "weatherballoon","weatherforecast","weatherfront","weathering","weathermap","weathersatellite","weathersystem","weaver",
+    "webassembly","webdeveloper","webhook","webscraper","websocket","weddingdress","wedgeshoes","wednesday",
+    "weedy","week","weekday","weekend","weekly","weigela","weight","weightlifting",
+    "weird","welcome","weldclamp","welder","weldgauge","weldgun","weldhead","weldmask",
+    "weldpad","weldpositioner","weldtip","wellbeing","wellington","wellness","wetbulb","wetland",
+    "wetsuit","whale","whammybar","wheat","wheelchair","whey","whippedcream","whippet",
+    "whirlpool","whisk","white","whitebean","whiteboxtest","whitechocolate","whitedwarf","whitefish",
+    "whiteout","whiterice","whiteshark","whitestork","whitetailed","whitewine","whole","wholegrain",
+    "wholehearted","wholenote","wholesome","whooperswan","wide","widebrimmed","widespread","widget",
+    "width","wifi","wildcat","wildebeest","wilderness","wildflower","wildginger","wildlife",
+    "wildlifebiologist","wildlifeofficer","wildmushroom","wildrice","wildturkey","willful","willingness","willow",
+    "willowwarbler","willpower","wind","windadvisory","windbreaker","windchill","winderosion","windfarm",
+    "windgust","windhoek","window","windowblind","windowsill","windpipe","windpowered","windshear",
+    "windshift","windstorm","windsurfing","windy","wine","winedecanter","winemaker","wingsuit",
+    "winnipeg","winsome","winter","winteradvisory","wintercoat","wintergloves","winterstorm","wintrymix",
+    "wire","wirecoiler","wirecutter","wireformer","wiregauge","wiregrab","wirehook","wireless",
+    "wirelocator","wiremeasure","wirepuller","wirereel","wirerope","wiresaw","wiresplicer","wirestripper",
+    "wiretensioner","wirewhisk","wisdom","wise","wisent","wispy","wisteria","wisteriavine",
+    "wistful","witty","woeful","wok","wokspatula","wolf","wollongong","wolverine",
+    "wombat","wonder","wonderful","wonky","wonton","wood","woodbittool","woodblock",
+    "woodchisel","woodchopping","woodchuck","wooddrill","woodenchopsticks","woodenspoon","woodfile","woodfiller",
+    "woodglue","woodhammer","woodknife","woodland","woodmallet","woodpecker","woodplaner","woodrasptools",
+    "woodrouter","woodsaw","woodwind","woolblanket","woolymammoth","woolymonkey","woozy","worcestershire",
+    "word","wordly","wordy","work","workbench","workboots","workclamp","workflow",
+    "workgloves","worklight","workload","workouttop","worldly","worldmusic","worldrally","worm",
+    "wormgear","wormhole","wormwood","wormy","worried","worthy","wovenbasket","wrap",
+    "wraparound","wrapskirt","wrasse","wrath","wreck","wren","wrench","wrest",
+    "wrestling","wretched","wring","wrist","wristband","write","writer","writhe",
+    "wrong","wuhan","wuxi",
+  },
+  X={
+    "xenial","xenolith","xenon","xenophile","xeranthemum","xeric","xerophyte","xerox",
+    "xgames","xiamen","xian","xinjiang","xml","xray","xraytechnician","xylem",
+    "xylography","xylophone","xylose","xyster",
+  },
+  Y={
+    "yabby","yacht","yachtcaptain","yachtrace","yak","yakutia","yam","yambeen",
+    "yaml","yamoussoukro","yaounde","yappy","yardang","yardbird","yarrow","yawning",
+    "year","yearlong","yearly","yearn","yearning","yeast","yeastbread","yekaterinburg",
+    "yellow","yemen","yerevan","yesterday","yew","yield","yielding","yodel",
+    "yodeling","yoga","yogaleggings","yogapants","yogurt","yogurtmaker","yogurtparfait","yokel",
+    "yokohama","yonder","young","youthful","youthfulness","yowl","yoyo","ytterbium",
+    "yttrium","yucca","yuccacane","yucky","yummy","yunnan","yuzu",
+  },
+  Z={
+    "zaatar","zabaglione","zaffre","zagazig","zagreb","zambia","zantedeschia","zanzibar",
+    "zappy","zaragoza","zauschneria","zbracket","zeal","zealous","zealousness","zebra",
+    "zebrafish","zebragrass","zebrahaworthia","zenith","zephyr","zeppelin","zero","zeroday",
+    "zerogravity","zerovisibility","zester","zestergrater","zestful","zestfulness","zhejiang","zhengzhou",
+    "zhongshan","zigzag","zimbabwe","zinc","zincrods","zincspray","zinnia","zipperbag",
+    "zippy","ziptie","zipup","zircon","zirconium","zithermusic","zodiac","zonal",
+    "zoneval","zoning","zoologist","zoomed","zootsuit","zorbing","zorilla","zucchini",
+    "zurich","zygote",
+  },
+}
+
+
+-- ──────────────────────────────────────────────
+-- STATE
+-- ──────────────────────────────────────────────
+local currentLetter = nil
+local usedWords     = {}
+local pickA         = nil
+local pickB         = nil
+local mode          = "browse"
+
+-- ──────────────────────────────────────────────
+-- UTIL
+-- ──────────────────────────────────────────────
+local function tween(obj, props, t, style, dir)
+    local ti = TweenInfo.new(t or 0.18, style or Enum.EasingStyle.Quad, dir or Enum.EasingDirection.Out)
+    TweenService:Create(obj, ti, props):Play()
+end
+
+local function getFresh(letter)
+    local all = DB[letter] or {}
+    local fresh = {}
+    for _, w in ipairs(all) do
+        if not usedWords[w] then table.insert(fresh, w) end
+    end
+    if #fresh < 6 then
+        usedWords = {}
+        return all
+    end
+    return fresh
+end
+
+local function pickRandom(pool, count)
+    local copy = {}
+    for _, v in ipairs(pool) do table.insert(copy, v) end
+    local result = {}
+    for i = 1, math.min(count, #copy) do
+        local idx = math.random(1, #copy)
+        table.insert(result, copy[idx])
+        table.remove(copy, idx)
+    end
+    return result
+end
+
+-- ──────────────────────────────────────────────
+-- UI HELPERS
+-- ──────────────────────────────────────────────
+local Gui = Instance.new("ScreenGui")
+Gui.Name           = "WordHelperV4"
+Gui.ResetOnSpawn   = false
+Gui.IgnoreGuiInset = true
+Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+-- CoreGui works in most executors; fall back to PlayerGui if restricted
+local _ok = pcall(function() Gui.Parent = game:GetService("CoreGui") end)
+if not _ok then Gui.Parent = LocalPlayer:WaitForChild("PlayerGui") end
+
+local function RoundFrame(parent, size, pos, color, radius)
+    local f = Instance.new("Frame")
+    f.Size, f.Position, f.BackgroundColor3, f.BorderSizePixel = size, pos, color, 0
+    f.Parent = parent
+    local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, radius or 10); c.Parent = f
+    return f
+end
+
+local function RoundBtn(parent, size, pos, bg, txt, tc, ts)
+    local b = Instance.new("TextButton")
+    b.Size, b.Position, b.BackgroundColor3, b.BorderSizePixel = size, pos, bg, 0
+    b.Text, b.TextColor3, b.Font, b.TextSize = txt, tc or CLR.white, Enum.Font.GothamBold, ts or 14
+    b.AutoButtonColor = false
+    b.Parent = parent
+    local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0,8); c.Parent = b
+    return b
+end
+
+local function Lbl(parent, size, pos, text, color, ts, align, bold)
+    local l = Instance.new("TextLabel")
+    l.Size, l.Position, l.Text = size, pos, text
+    l.TextColor3, l.BackgroundTransparency, l.BorderSizePixel = color or CLR.bodyText, 1, 0
+    l.Font = bold and Enum.Font.GothamBold or Enum.Font.Gotham
+    l.TextSize = ts or 14
+    l.TextXAlignment = align or Enum.TextXAlignment.Left
+    l.TextWrapped, l.Parent = true, parent
+    return l
+end
+
+-- ──────────────────────────────────────────────
+-- MAIN PANEL — compact mobile box
+-- ──────────────────────────────────────────────
+local UIS = game:GetService("UserInputService")
+
+local PW, PH = 300, 500
+local TH = 52  -- title bar height
+
+-- Derived layout constants
+local tabY    = TH + 6          -- 58
+local irY     = tabY + 36       -- 94
+local sepY    = irY + 40        -- 134
+local contentY = sepY + 4       -- 138
+local contentH = PH - contentY - 30  -- 332
+
+local Main = RoundFrame(Gui, UDim2.new(0,PW,0,PH), UDim2.new(0.5,-PW/2,0.5,-PH/2), CLR.bg, 12)
+Main.ClipsDescendants, Main.Active = true, true
+
+-- ─── FAB (restore button shown when panel is closed) ─────
+-- Declared early so CloseBtn can reference it
+local FAB = Instance.new("TextButton")
+FAB.Size             = UDim2.new(0,52,0,52)
+FAB.Position         = UDim2.new(0,14,1,-70)   -- bottom-left by default
+FAB.BackgroundColor3 = CLR.accent
+FAB.BorderSizePixel  = 0
+FAB.Text             = "W"
+FAB.TextColor3       = CLR.bg
+FAB.Font             = Enum.Font.GothamBold
+FAB.TextSize         = 20
+FAB.AutoButtonColor  = false
+FAB.Visible          = false   -- hidden until close is pressed
+FAB.ZIndex           = 10
+FAB.Parent           = Gui
+local fabCorner = Instance.new("UICorner"); fabCorner.CornerRadius = UDim.new(1,0); fabCorner.Parent = FAB
+local fabStroke = Instance.new("UIStroke"); fabStroke.Color=CLR.accentDark; fabStroke.Thickness=2; fabStroke.Parent=FAB
+
+-- FAB drag (so the user can move it out of the way)
+do
+    local fd, fds, fms = false, nil, nil
+    FAB.InputBegan:Connect(function(i)
+        if i.UserInputType==Enum.UserInputType.Touch or i.UserInputType==Enum.UserInputType.MouseButton1 then
+            fd=true; fds=FAB.Position; fms=i.Position
+        end
+    end)
+    UIS.InputEnded:Connect(function(i)
+        if i.UserInputType==Enum.UserInputType.Touch or i.UserInputType==Enum.UserInputType.MouseButton1 then
+            fd=false
+        end
+    end)
+    UIS.InputChanged:Connect(function(i)
+        if not fd then return end
+        if i.UserInputType==Enum.UserInputType.Touch or i.UserInputType==Enum.UserInputType.MouseMovement then
+            local vp = workspace.CurrentCamera.ViewportSize
+            local d  = i.Position - fms
+            FAB.Position = UDim2.new(0,
+                math.clamp(fds.X.Offset + d.X, 0, vp.X - 52), 0,
+                math.clamp(fds.Y.Offset + d.Y, 0, vp.Y - 52))
+        end
+    end)
+end
+
+-- FAB tap: restore panel at FAB position, hide FAB
+FAB.MouseButton1Click:Connect(function()
+    -- Re-centre panel near where the FAB is so it reappears predictably
+    local vp   = workspace.CurrentCamera.ViewportSize
+    local fx   = FAB.Position.X.Offset
+    local fy   = FAB.Position.Y.Offset
+    local newX = math.clamp(fx, 0, vp.X - PW)
+    local newY = math.clamp(fy - PH/2, 0, vp.Y - PH)
+    Main.Position = UDim2.new(0, newX, 0, newY)
+    Main.Visible  = true
+    FAB.Visible   = false
+end)
+
+local stroke = Instance.new("UIStroke")
+stroke.Color, stroke.Thickness, stroke.ApplyStrokeMode = CLR.border, 1.5, Enum.ApplyStrokeMode.Border
+stroke.Parent = Main
+
+-- ─── TITLE BAR ───────────────────────────────
+local TBar = RoundFrame(Main, UDim2.new(1,0,0,TH), UDim2.new(0,0,0,0), CLR.panel, 0)
+local TFix = Instance.new("Frame")
+TFix.Size=UDim2.new(1,0,0,16); TFix.Position=UDim2.new(0,0,1,-16)
+TFix.BackgroundColor3=CLR.panel; TFix.BorderSizePixel=0; TFix.Parent=TBar
+
+local Stripe = Instance.new("Frame")
+Stripe.Size=UDim2.new(0,3,0,26); Stripe.Position=UDim2.new(0,12,0.5,-13)
+Stripe.BackgroundColor3=CLR.accent; Stripe.BorderSizePixel=0; Stripe.Parent=TBar
+local sc = Instance.new("UICorner"); sc.CornerRadius=UDim.new(0,2); sc.Parent=Stripe
+
+Lbl(TBar, UDim2.new(1,-80,1,0), UDim2.new(0,22,0,0), "Word Helper", CLR.titleText, 14, Enum.TextXAlignment.Left, true)
+
+-- Close button (hides panel, shows FAB restore button)
+local CloseBtn = RoundBtn(TBar, UDim2.new(0,30,0,30), UDim2.new(1,-36,0.5,-15), CLR.badgeRed, "✕", CLR.white, 14)
+CloseBtn.MouseButton1Click:Connect(function()
+    Main.Visible = false
+    FAB.Visible  = true
+end)
+CloseBtn.MouseEnter:Connect(function() tween(CloseBtn,{BackgroundColor3=Color3.fromRGB(240,80,70)},0.12) end)
+CloseBtn.MouseLeave:Connect(function() tween(CloseBtn,{BackgroundColor3=CLR.badgeRed},0.12) end)
+
+-- Minimize/expand button
+local MinBtn = RoundBtn(TBar, UDim2.new(0,30,0,30), UDim2.new(1,-70,0.5,-15), CLR.accentDark, "–", CLR.accent, 18)
+
+local collapsed = false
+
+-- ─── DRAG via UserInputService ────────────────
+-- UIS tracks the finger even after it slides off the title bar
+do
+    local dragging, dragStart, startPos = false, nil, nil
+
+    TBar.InputBegan:Connect(function(i)
+        if i.UserInputType==Enum.UserInputType.Touch or i.UserInputType==Enum.UserInputType.MouseButton1 then
+            dragging=true; dragStart=i.Position; startPos=Main.Position
+        end
+    end)
+
+    UIS.InputEnded:Connect(function(i)
+        if i.UserInputType==Enum.UserInputType.Touch or i.UserInputType==Enum.UserInputType.MouseButton1 then
+            dragging=false
+        end
+    end)
+
+    UIS.InputChanged:Connect(function(i)
+        if not dragging then return end
+        if i.UserInputType==Enum.UserInputType.Touch or i.UserInputType==Enum.UserInputType.MouseMovement then
+            local vp    = workspace.CurrentCamera.ViewportSize
+            local curH  = collapsed and TH or PH
+            local delta = i.Position - dragStart
+            Main.Position = UDim2.new(0,
+                math.clamp(startPos.X.Offset + delta.X, 0, vp.X - PW), 0,
+                math.clamp(startPos.Y.Offset + delta.Y, 0, vp.Y - curH))
+        end
+    end)
+end
+
+-- ─── MODE TABS ───────────────────────────────
+local TabBar = RoundFrame(Main, UDim2.new(1,-16,0,30), UDim2.new(0,8,0,tabY), CLR.panel, 6)
+local tabB = RoundBtn(TabBar, UDim2.new(0.5,-2,1,-4), UDim2.new(0,2,0,2), CLR.accent, "Browse", CLR.bg, 13)
+local tabV = RoundBtn(TabBar, UDim2.new(0.5,-2,1,-4), UDim2.new(0.5,1,0,2), CLR.card, "A vs B", CLR.bodyText, 13)
+
+-- ─── INPUT ROW ───────────────────────────────
+local IR = Instance.new("Frame")
+IR.Size=UDim2.new(1,-16,0,36); IR.Position=UDim2.new(0,8,0,irY)
+IR.BackgroundTransparency=1; IR.Parent=Main
+
+local LetBox = Instance.new("TextBox")
+LetBox.Size=UDim2.new(0,44,1,-6); LetBox.Position=UDim2.new(0,0,0,3)
+LetBox.BackgroundColor3=CLR.card; LetBox.BorderSizePixel=0
+LetBox.TextColor3=CLR.white; LetBox.Font=Enum.Font.GothamBold; LetBox.TextSize=20
+LetBox.PlaceholderText="A"; LetBox.Text=""; LetBox.ClearTextOnFocus=false; LetBox.Parent=IR
+local lbc=Instance.new("UICorner"); lbc.CornerRadius=UDim.new(0,6); lbc.Parent=LetBox
+local lbs=Instance.new("UIStroke"); lbs.Color=CLR.border; lbs.Thickness=1; lbs.Parent=LetBox
+
+local CntLbl = Lbl(IR, UDim2.new(0,46,1,0), UDim2.new(0,50,0,0), "—", CLR.mutedText, 11, Enum.TextXAlignment.Left)
+local GoBtn = RoundBtn(IR, UDim2.new(1,-102,1,-6), UDim2.new(0,100,0,3), CLR.accent, "Go ›", CLR.bg, 14)
+GoBtn.MouseEnter:Connect(function() tween(GoBtn,{BackgroundColor3=Color3.fromRGB(100,230,165)},0.12) end)
+GoBtn.MouseLeave:Connect(function() tween(GoBtn,{BackgroundColor3=CLR.accent},0.12) end)
+
+-- ─── SEPARATOR ───────────────────────────────
+local Sep = Instance.new("Frame")
+Sep.Size=UDim2.new(1,-16,0,1); Sep.Position=UDim2.new(0,8,0,sepY)
+Sep.BackgroundColor3=CLR.border; Sep.BorderSizePixel=0; Sep.Parent=Main
+
+-- ─── BROWSE AREA ─────────────────────────────
+local BA = Instance.new("ScrollingFrame")
+BA.Size=UDim2.new(1,-16,0,contentH); BA.Position=UDim2.new(0,8,0,contentY)
+BA.BackgroundTransparency=1; BA.BorderSizePixel=0
+BA.ScrollBarThickness=3; BA.ScrollBarImageColor3=CLR.accent
+BA.CanvasSize=UDim2.new(0,0,0,0); BA.AutomaticCanvasSize=Enum.AutomaticSize.Y
+BA.Parent=Main
+local BL=Instance.new("UIListLayout"); BL.Padding=UDim.new(0,4); BL.FillDirection=Enum.FillDirection.Vertical; BL.SortOrder=Enum.SortOrder.LayoutOrder; BL.Parent=BA
+local BP=Instance.new("UIPadding"); BP.PaddingBottom=UDim.new(0,4); BP.Parent=BA
+
+-- ─── VERSUS AREA ─────────────────────────────
+-- Cards sit side-by-side, stacked compactly
+local VA = RoundFrame(Main, UDim2.new(1,-16,0,contentH), UDim2.new(0,8,0,contentY), CLR.panel, 8)
+VA.Visible=false
+
+-- Card A (left half)
+local CA = RoundFrame(VA, UDim2.new(0.5,-5,0,110), UDim2.new(0,3,0,4), CLR.card, 8)
+local CAS = Instance.new("UIStroke"); CAS.Color=CLR.accentDark; CAS.Thickness=1.5; CAS.Parent=CA
+Lbl(CA, UDim2.new(1,0,0,18), UDim2.new(0,0,0,4), "  A", CLR.accent, 11, Enum.TextXAlignment.Left, true)
+local LblAW = Lbl(CA, UDim2.new(1,-8,0,42), UDim2.new(0,4,0,22), "—", CLR.white, 17, Enum.TextXAlignment.Center, true)
+local PABtn = RoundBtn(CA, UDim2.new(1,-10,0,28), UDim2.new(0,5,1,-33), CLR.accentDark, "Use ✓", CLR.accent, 12)
+
+-- Card B (right half)
+local CB = RoundFrame(VA, UDim2.new(0.5,-5,0,110), UDim2.new(0.5,2,0,4), CLR.card, 8)
+local CBS = Instance.new("UIStroke"); CBS.Color=CLR.rivalDark; CBS.Thickness=1.5; CBS.Parent=CB
+Lbl(CB, UDim2.new(1,0,0,18), UDim2.new(0,0,0,4), "  B", CLR.rival, 11, Enum.TextXAlignment.Left, true)
+local LblBW = Lbl(CB, UDim2.new(1,-8,0,42), UDim2.new(0,4,0,22), "—", CLR.white, 17, Enum.TextXAlignment.Center, true)
+local PBBtn = RoundBtn(CB, UDim2.new(1,-10,0,28), UDim2.new(0,5,1,-33), CLR.rivalDark, "Use ✓", CLR.rival, 12)
+
+-- Neither button
+local NBtn = RoundBtn(VA, UDim2.new(1,-8,0,28), UDim2.new(0,4,0,120), CLR.card, "Neither – new pair 🔄", CLR.bodyText, 12)
+local NS = Instance.new("UIStroke"); NS.Color=CLR.border; NS.Thickness=1; NS.Parent=NBtn
+
+-- History
+Lbl(VA, UDim2.new(1,-8,0,16), UDim2.new(0,4,0,154), "Last picked:", CLR.mutedText, 10, Enum.TextXAlignment.Left)
+local HS = Instance.new("ScrollingFrame")
+HS.Size=UDim2.new(1,-8,0,contentH-170); HS.Position=UDim2.new(0,4,0,172)
+HS.BackgroundTransparency=1; HS.BorderSizePixel=0
+HS.ScrollBarThickness=2; HS.ScrollBarImageColor3=CLR.accent
+HS.CanvasSize=UDim2.new(0,0,0,0); HS.AutomaticCanvasSize=Enum.AutomaticSize.Y; HS.Parent=VA
+local HL=Instance.new("UIListLayout"); HL.Padding=UDim.new(0,2); HL.Parent=HS
+
+-- ─── STATUS BAR ──────────────────────────────
+local SBar = RoundFrame(Main, UDim2.new(1,0,0,30), UDim2.new(0,0,1,-30), CLR.panel, 0)
+local SF = Instance.new("Frame"); SF.Size=UDim2.new(1,0,0,14); SF.BackgroundColor3=CLR.panel; SF.BorderSizePixel=0; SF.Parent=SBar
+local SLbl = Lbl(SBar, UDim2.new(1,-10,1,0), UDim2.new(0,8,0,0), "Enter letter, tap Go", CLR.mutedText, 11, Enum.TextXAlignment.Left)
+
+-- ──────────────────────────────────────────────
+-- LOGIC
+-- ──────────────────────────────────────────────
+local wBtns = {}
+local choiceHist = {}
+
+local function clearBrowse()
+    for _,b in ipairs(wBtns) do if b and b.Parent then b:Destroy() end end
+    wBtns = {}
+end
+
+local function addWordBtn(word, lo)
+    local row = Instance.new("Frame"); row.Size=UDim2.new(1,0,0,40); row.BackgroundTransparency=1; row.LayoutOrder=lo; row.Parent=BA
+    local btn = RoundBtn(row, UDim2.new(1,0,1,0), UDim2.new(0,0,0,0), CLR.card, word, CLR.bodyText, 13)
+    btn.TextXAlignment=Enum.TextXAlignment.Left
+    local pad=Instance.new("UIPadding"); pad.PaddingLeft=UDim.new(0,10); pad.Parent=btn
+    local badge=RoundBtn(btn, UDim2.new(0,50,0,26), UDim2.new(1,-56,0.5,-13), CLR.accentDark, "Copy", CLR.accent, 11)
+    btn.MouseEnter:Connect(function() tween(btn,{BackgroundColor3=CLR.cardHover},0.12) end)
+    btn.MouseLeave:Connect(function() tween(btn,{BackgroundColor3=CLR.card},0.12) end)
+    local function use()
+        if setclipboard then setclipboard(word) end
+        badge.Text="✓"; tween(badge,{BackgroundColor3=CLR.badgeGreen},0.1)
+        task.delay(1.2,function() if badge and badge.Parent then badge.Text="Copy"; tween(badge,{BackgroundColor3=CLR.accentDark},0.2) end end)
+        usedWords[word]=true; SLbl.Text="Copied: "..word
+    end
+    btn.MouseButton1Click:Connect(use); badge.MouseButton1Click:Connect(use)
+    table.insert(wBtns, row)
+end
+
+local function populateBrowse(letter)
+    clearBrowse()
+    local fresh = getFresh(letter)
+    local sample = pickRandom(fresh, 30)
+    CntLbl.Text = #(DB[letter] or {}).."w"
+    for i,w in ipairs(sample) do addWordBtn(w,i) end
+    SLbl.Text = #sample.." words for '"..letter.."' · tap to copy"
+end
+
+local function drawVersus(letter)
+    local fresh = getFresh(letter)
+    if #fresh < 2 then usedWords={}; fresh=getFresh(letter) end
+    local pair = pickRandom(fresh, 2)
+    pickA = pair[1] or "—"; pickB = pair[2] or "—"
+    LblAW.Text=pickA; LblBW.Text=pickB
+    SLbl.Text = "Pick A or B for '"..letter.."'"
+end
+
+local function addHist(word, side)
+    local color = side=="A" and CLR.accent or CLR.rival
+    local h=Lbl(HS, UDim2.new(1,-4,0,20), UDim2.new(0,2,0,0), side..": "..word, color, 11, Enum.TextXAlignment.Left)
+    h.LayoutOrder=#choiceHist; table.insert(choiceHist,h)
+    task.defer(function() HS.CanvasPosition=Vector2.new(0,HL.AbsoluteContentSize.Y) end)
+end
+
+-- tab switching
+local function setMode(m)
+    mode=m
+    if m=="browse" then
+        BA.Visible=true; VA.Visible=false
+        tween(tabB,{BackgroundColor3=CLR.accent,TextColor3=CLR.bg},0.15)
+        tween(tabV,{BackgroundColor3=CLR.card,TextColor3=CLR.bodyText},0.15)
+    else
+        BA.Visible=false; VA.Visible=true
+        tween(tabV,{BackgroundColor3=CLR.rival,TextColor3=CLR.bg},0.15)
+        tween(tabB,{BackgroundColor3=CLR.card,TextColor3=CLR.bodyText},0.15)
+        if currentLetter then drawVersus(currentLetter) end
+    end
+end
+
+tabB.MouseButton1Click:Connect(function() setMode("browse") end)
+tabV.MouseButton1Click:Connect(function() setMode("versus") end)
+
+GoBtn.MouseButton1Click:Connect(function()
+    local raw = string.sub(LetBox.Text or "",1,1)
+    if raw=="" then SLbl.Text="⚠ Type a letter first"; return end
+    local letter = string.upper(raw)
+    if not DB[letter] then SLbl.Text="⚠ No list for '"..letter.."'"; return end
+    currentLetter=letter; usedWords={}
+    if mode=="browse" then populateBrowse(letter) else drawVersus(letter) end
+end)
+
+LetBox.FocusLost:Connect(function(enter)
+    if enter then GoBtn.MouseButton1Click:Fire() end
+end)
+
+PABtn.MouseButton1Click:Connect(function()
+    if not pickA or pickA=="—" then return end
+    if setclipboard then setclipboard(pickA) end
+    usedWords[pickA]=true; addHist(pickA,"A"); SLbl.Text="Copied A: "..pickA
+    tween(CA,{BackgroundColor3=CLR.accentDark},0.15)
+    task.delay(0.3,function() tween(CA,{BackgroundColor3=CLR.card},0.25); if currentLetter then drawVersus(currentLetter) end end)
+end)
+
+PBBtn.MouseButton1Click:Connect(function()
+    if not pickB or pickB=="—" then return end
+    if setclipboard then setclipboard(pickB) end
+    usedWords[pickB]=true; addHist(pickB,"B"); SLbl.Text="Copied B: "..pickB
+    tween(CB,{BackgroundColor3=CLR.rivalDark},0.15)
+    task.delay(0.3,function() tween(CB,{BackgroundColor3=CLR.card},0.25); if currentLetter then drawVersus(currentLetter) end end)
+end)
+
+NBtn.MouseButton1Click:Connect(function()
+    if currentLetter then drawVersus(currentLetter) end
+end)
+
+-- ── MINIMIZE / EXPAND TOGGLE ─────────────────────
+local contentFrames = {TabBar, IR, Sep, BA, SBar}
+MinBtn.MouseButton1Click:Connect(function()
+    collapsed = not collapsed
+    if collapsed then
+        for _, f in ipairs(contentFrames) do f.Visible = false end
+        VA.Visible = false
+        tween(Main, {Size = UDim2.new(0, PW, 0, TH)}, 0.18)
+        MinBtn.Text = "+"
+    else
+        tween(Main, {Size = UDim2.new(0, PW, 0, PH)}, 0.18)
+        task.delay(0.14, function()
+            for _, f in ipairs(contentFrames) do f.Visible = true end
+            if mode=="browse" then BA.Visible=true; VA.Visible=false
+            else BA.Visible=false; VA.Visible=true end
+        end)
+        MinBtn.Text = "–"
+    end
+end)
+
+setMode("browse")
+print("[WordHelperV4] Loaded – enter a letter and tap Go.")
